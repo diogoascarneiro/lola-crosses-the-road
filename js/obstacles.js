@@ -5,6 +5,7 @@
 *
 */
 
+/* MAIN OBSTACLE CLASS */
 class Obstacle {
     constructor(x, y, width, height, color) {
       this.x = x;
@@ -20,38 +21,41 @@ class Obstacle {
       ctx.fillStyle = this.color;
       ctx.fillRect(this.x, this.y, this.width, this.height);
     }
+
+    moveLeft() {
+      if (this.x > 0) {
+        this.x -= this.dx;
+         }
+    }
+    moveRight() {
+      if (this.x < canvas.width) {
+        this.x += this.dx;
+      } 
+    }
+    
+    moveUp() {
+     if (this.y > 0) {
+       this.y -= this.dy;
+        }
+    }
+    moveDown() {
+      if (this.y < canvas.height) {
+        this.y += this.dy;
+      }
+    }
  }
 
+ /* ROAD CLASS */
   class Road extends Obstacle {
     constructor(y, height) {
        super(0, y, canvas.width, height, "lightgray");
       }
-
   }
 
+ /* CAR CLASS */
   class Car extends Obstacle {
   
- moveLeft() {
-  if (this.x > 0) {
-    this.x -= this.dx;
-     }
-}
-moveRight() {
-  if (this.x < canvas.width) {
-    this.x += this.dx;
-  } 
-}
-
-moveUp() {
- if (this.y > 0) {
-   this.y -= this.dy;
-    }
-}
-moveDown() {
-  if (this.y < canvas.height) {
-    this.y += this.dy;
-  }
-}
+ /* will use for images and maybe other stuff */
   }
 
   function createCar() {
@@ -59,12 +63,19 @@ moveDown() {
     cars.push(newCar);
   }
 
-  /*leaving it only for player vs obstacles for now but would like to to obstacle on obstacle in the future, maybe*/
-  function detectCollision(obstacle) {
-    let playerLeft = lola.x;
-    let playerRight = lola.x + lola.width;
-    let playerUp = lola.y;
-    let playerDown = lola.y + lola.height;
+/* PERSON CLASS */
+class Person extends Obstacle { 
+  
+}
+
+  /* COLLISION DETECTION
+  *  leaving it only for player vs obstacles for now but would like to to obstacle on obstacle in the future, maybe*/
+  
+  function detectCollision(entity, obstacle) {
+    let entityLeft = entity.x;
+    let entityRight = entity.x + entity.width;
+    let entityUp = entity.y;
+    let entityDown = entity.y + entity.height;
   
     let obstLeft = obstacle.x;
     let obstRight = obstacle.x + obstacle.width;
@@ -73,10 +84,10 @@ moveDown() {
   
     //Check for all the intersections between the player and the obstacle
     if (
-      playerDown < obstUp ||
-      playerUp > obstDown ||
-      playerLeft > obstRight ||
-      playerRight < obstLeft
+      entityDown < obstUp ||
+      entityUp > obstDown ||
+      entityLeft > obstRight ||
+      entityRight < obstLeft
     ) {
       return false;
     } else {

@@ -17,7 +17,7 @@ const ctx = canvas.getContext("2d");
  createCar();
 
  window.addEventListener('load', (event) => {
-    updateEverything();
+  updateEverything();
   });
  
 
@@ -31,7 +31,15 @@ function clearCanvas() {
   }
 
 function updateEverything() {
-    clearCanvas();
+
+//   if (!checkAssetsLoaded()) {
+//   ctx.fillStyle = "black";
+//   ctx.font = "20px Georgia";
+//   ctx.fillText("LOADING ASSETS", 50, 200);
+//   animationID = requestAnimationFrame(updateEverything);
+// } else {
+
+  clearCanvas();
     
     testObst.drawObstacle();
     testRoad.drawObstacle();
@@ -39,7 +47,7 @@ function updateEverything() {
      
    /*
    
-   Isto abaixo gera um array cada vez maior. Pode ser fonte de problemas? - fazer um splice
+   Isto abaixo gera um array cada vez maior. Pode ser fonte de problemas? - solução possivel - fazer um splice
 
    carFrequency++;
 if (carFrequency % 200 === 1) {
@@ -56,7 +64,7 @@ if (carFrequency % 200 === 1) {
       car.x = 0;
     }
 
-      gameOver = detectCollision(car);
+      gameOver = detectCollision(lola,car);
     });
 
    if (!gameOver) {
@@ -69,6 +77,7 @@ if (carFrequency % 200 === 1) {
     ctx.fillText("Oh noes! Game Over!", 50, 200);
   }
 }
+// }
 
   document.addEventListener("keydown", (keyboardEvent) => {
     lola.move(keyboardEvent.key);

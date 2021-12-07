@@ -6,8 +6,8 @@ class Dog {
         this.dy = 5;
         this.width = width;
         this.height = height;
-        // this.img = new Image();
-        // this.img.src = '';
+        this.img = new Image();
+        this.img.src = "assets/lola-sprite.png";
     }
 
     /* Movement method. Need to check how to handle collisions ( && (!detectCollision(testObst)) ) - 
@@ -20,7 +20,7 @@ class Dog {
               this.y -= this.dy;
             }
             
-            if ( detectCollision(testObst)) {
+            if (detectCollision(lola, testObst)) {
               this.y += this.dy +1;
             }
             break;
@@ -28,7 +28,7 @@ class Dog {
             if (this.y < canvas.height) {
               this.y += this.dy;
             }
-            if (detectCollision(testObst)) {
+            if (detectCollision(lola, testObst)) {
               this.y -= this.dy +1;
             }
             break;
@@ -36,7 +36,7 @@ class Dog {
              if (this.x > 0 ) {
             this.x -= this.dx;
              }
-             if (detectCollision(testObst)) {
+             if (detectCollision(lola, testObst)) {
               this.x += this.dx +1;
             }
             break;
@@ -44,7 +44,7 @@ class Dog {
             if (this.x < canvas.width - this.width ) {
               this.x += this.dx;
             }
-            if (detectCollision(testObst)) {
+            if (detectCollision(lola, testObst)) {
               this.x -= this.dx +1;
             }
             break;

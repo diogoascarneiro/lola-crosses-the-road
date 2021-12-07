@@ -52,9 +52,10 @@ class Dog {
       }
  
       drawDog() {
-          /*temporary, for testing*/
+          /*temporary, for testing
         ctx.fillStyle = "blue";
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        ctx.fillRect(this.x, this.y, this.width, this.height);*/
+        
       }
 
 }

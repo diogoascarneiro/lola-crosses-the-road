@@ -15,24 +15,37 @@ class Dog {
 
           move(key) {
         switch (key) {
-          case "ArrowUp":
-            if (this.y > 0) {
+          case "ArrowUp":         
+            if (this.y > 0 ) {
               this.y -= this.dy;
+            }
+            
+            if ( detectCollision(testObst)) {
+              this.y += this.dy +1;
             }
             break;
           case "ArrowDown":
             if (this.y < canvas.height) {
               this.y += this.dy;
             }
+            if (detectCollision(testObst)) {
+              this.y -= this.dy +1;
+            }
             break;
           case "ArrowLeft":
-             if (this.x > 0) {
+             if (this.x > 0 ) {
             this.x -= this.dx;
              }
+             if (detectCollision(testObst)) {
+              this.x += this.dx +1;
+            }
             break;
           case "ArrowRight":
-            if (this.x < canvas.width - this.width) {
+            if (this.x < canvas.width - this.width ) {
               this.x += this.dx;
+            }
+            if (detectCollision(testObst)) {
+              this.x -= this.dx +1;
             }
             break;
         }

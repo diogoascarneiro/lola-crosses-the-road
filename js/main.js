@@ -32,13 +32,14 @@ function clearCanvas() {
 
 function updateEverything() {
     clearCanvas();
-    lola.drawDog();
+    
     testObst.drawObstacle();
     testRoad.drawObstacle();
+    lola.drawDog();
      
    /*
    
-   Isto abaixo gera um array cada vez maior. Pode ser fonte de problemas?
+   Isto abaixo gera um array cada vez maior. Pode ser fonte de problemas? - fazer um splice
 
    carFrequency++;
 if (carFrequency % 200 === 1) {

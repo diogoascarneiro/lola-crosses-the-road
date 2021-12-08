@@ -3,31 +3,38 @@ let imagesLoaded = 0;
 
 /* Declaring assets here. Could have done it with a loop from an array but I wanted to have an identifier to refer to in the code elsewhere, e.g. "lolaSprite" for Lola's sprite */
 
+class ImgAsset extends Image {
+    constructor(src, frameWidth, frameHeight, wOffset, hOffset) {
+        super();
+        this.src = src;
+        this.frameWidth = frameWidth;
+        this.frameHeight = frameHeight;
+        this.onload = () => imagesLoaded++;
+        this.wOffset = wOffset;
+        this.hOffset = hOffset;
+        this.row = 1;
+        this.column = 1;
+    }
+    /* ver como passar isto imediatamente ao criar um novo objecto desta classe em vez de ter que chamar o metodo separadamente */
+    register() {assetsArray.push(this);}
+ }
+
 /* LOLA'S SPRITE <3
-* Need to figure out a way to make the frames jump evenly by changing row and column!
+* Need to figure out a way to make the frames jump evenly by changing row and column! Offsetting is producing unintended results, namely bottom border is much wider than top
 */
 
-let lolaSpriteLeft = new Image();
-lolaSpriteLeft.src = "assets/lola-sprite-left.png";
-lolaSpriteLeft.onload = () => imagesLoaded++;
-lolaSpriteLeft.frameWidth = 55;
-lolaSpriteLeft.frameHeight = 35;
-lolaSpriteLeft.wOffset = 15;
-lolaSpriteLeft.hOffset = -20;
-lolaSpriteLeft.row = 1;
-lolaSpriteLeft.column = 1;
-assetsArray.push(lolaSpriteLeft);
+let lolaSpriteLeft = new ImgAsset("assets/lola-sprite-left.png", 55, 35, 15, -18);
+lolaSpriteLeft.register();
+let lolaSpriteRight = new ImgAsset("assets/lola-sprite-right.png", 55, 35, 15, -18);
+lolaSpriteRight.register();
+lolaSpriteRight.column = 13.70;
 
-let lolaSpriteRight = new Image();
-lolaSpriteRight.src = "assets/lola-sprite-right.png";
-lolaSpriteRight.onload = () => imagesLoaded++;
-lolaSpriteRight.frameWidth = 55;
-lolaSpriteRight.frameHeight = 35;
-lolaSpriteRight.wOffset = 15;
-lolaSpriteRight.hOffset = -20;
-lolaSpriteRight.row = 1;
-lolaSpriteRight.column = 13.75;
-assetsArray.push(lolaSpriteRight);
+
+/* CITY TILESET */
+
+let cityTileset = new ImgAsset("assets/city-tileset.png", 16, 16, 0, 0);
+cityTileset.register();
+
 
 function checkAssetsLoaded() {
    if (imagesLoaded === assetsArray.length) {

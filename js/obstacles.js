@@ -54,8 +54,26 @@ class Obstacle {
 
  /* CAR CLASS */
   class Car extends Obstacle {
-  
- /* will use for images and maybe other stuff */
+  constructor(color) {
+    super();
+    this.color = color;
+   }
+   
+  //  drawCar() {
+
+  //   switch (this.color) {
+  //     case 'blue':
+
+  //     break;
+  //     case 'green':
+
+  //     break;
+  //     case 'red':
+
+  //     break;
+  //   }
+  //  }
+
   }
 
   function createCar() {

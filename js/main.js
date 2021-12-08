@@ -5,6 +5,7 @@ const ctx = canvas.getContext("2d");
  let lola = new Dog(10, 10, 50, 50);
  let animationID = null;
  let gameOver = false;
+ let objects = [];
  let cars = [];
  let carFrequency = 0;
 
@@ -15,6 +16,7 @@ const ctx = canvas.getContext("2d");
  let testCar = new Car(250, 525, 10, 10, "purple");
  cars.push(testCar);
  createCar();
+ objects.push(lola, testObst, testRoad, testCar);
 
  window.addEventListener('load', (event) => {
   updateEverything();

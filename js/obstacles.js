@@ -61,6 +61,7 @@ class Obstacle {
   function createCar() {
     let newCar = new Car(0, 525, 10, 10, "purple");
     cars.push(newCar);
+    objects.push(newCar);
   }
 
 /* PERSON CLASS */
@@ -94,3 +95,12 @@ class Person extends Obstacle {
       return true;
     }
   }
+
+  function hasCollided(entity) {
+    for (let i = 0; i < objects.length; i++) {
+      if (objects[i] === entity) {continue} else if (detectCollision(entity, objects[i]) === true) {
+        return true;
+      } else {return false;}
+    }
+  }
+  

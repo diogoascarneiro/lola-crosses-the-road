@@ -20,7 +20,7 @@ class Dog {
               this.y -= this.dy;
             }
             
-            if (detectCollision(lola, testObst)) {
+            if (hasCollided(lola)) {
               this.y += this.dy +1;
             }
             break;
@@ -28,7 +28,7 @@ class Dog {
             if (this.y < canvas.height) {
               this.y += this.dy;
             }
-            if (detectCollision(lola, testObst)) {
+            if (hasCollided(lola)) {
               this.y -= this.dy +1;
             }
             break;
@@ -36,7 +36,7 @@ class Dog {
              if (this.x > 0 ) {
             this.x -= this.dx;
              }
-             if (detectCollision(lola, testObst)) {
+             if (hasCollided(lola)) {
               this.x += this.dx +1;
             }
             break;
@@ -44,7 +44,7 @@ class Dog {
             if (this.x < canvas.width - this.width ) {
               this.x += this.dx;
             }
-            if (detectCollision(lola, testObst)) {
+            if (hasCollided(lola)) {
               this.x -= this.dx +1;
             }
             break;
@@ -52,9 +52,9 @@ class Dog {
       }
  
       drawDog() {
-          /*temporary, for testing
+          /*temporary, for testing */
         ctx.fillStyle = "blue";
-        ctx.fillRect(this.x, this.y, this.width, this.height);*/
+        ctx.fillRect(this.x, this.y, this.width, this.height);
         
       }
 

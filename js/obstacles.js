@@ -70,7 +70,7 @@ class Person extends Obstacle {
 }
 
   /* COLLISION DETECTION
-  *  leaving it only for player vs obstacles for now but would like to to obstacle on obstacle in the future, maybe*/
+  *  The function to call for collision detection should be hasCollided() and not detectCollision() */
   
   function detectCollision(entity, obstacle) {
     let entityLeft = entity.x;
@@ -97,10 +97,13 @@ class Person extends Obstacle {
   }
 
   function hasCollided(entity) {
+    let collision = null;
     for (let i = 0; i < objects.length; i++) {
-      if (objects[i] === entity) {continue} else if (detectCollision(entity, objects[i]) === true) {
-        return true;
-      } else {return false;}
+      if (entity === objects[i]) {continue;}
+       else if (detectCollision(entity, objects[i]) === true) {
+        collision = true; break;
+      } else {collision = false;}
     }
+    return collision
   }
   

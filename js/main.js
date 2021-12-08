@@ -33,19 +33,21 @@ function clearCanvas() {
   }
 
 function updateEverything() {
+// First check if all assets are loaded 
 
-//   if (!checkAssetsLoaded()) {
-//   ctx.fillStyle = "black";
-//   ctx.font = "20px Georgia";
-//   ctx.fillText("LOADING ASSETS", 50, 200);
-//   animationID = requestAnimationFrame(updateEverything);
-// } else {
+  if (!checkAssetsLoaded()) {
+  ctx.fillStyle = "black";
+  ctx.font = "20px Georgia";
+  ctx.fillText("LOADING ASSETS", 50, 200);
+  animationID = requestAnimationFrame(updateEverything);
+ } else {
+
+// If they are, proceed to the game loop
 
   clearCanvas();
-    
-    testObst.drawObstacle();
-    testRoad.drawObstacle();
-    lola.drawDog();
+  testObst.drawObstacle();
+  testRoad.drawObstacle();
+  lola.drawDog();
      
    /*
    
@@ -79,7 +81,7 @@ if (carFrequency % 200 === 1) {
     ctx.fillText("Oh noes! Game Over!", 50, 200);
   }
 }
-// }
+ }
 
   document.addEventListener("keydown", (keyboardEvent) => {
     lola.move(keyboardEvent.key);

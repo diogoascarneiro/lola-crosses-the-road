@@ -36,14 +36,33 @@ lolaSpriteRight.column = 13.70;
 const cityTileset = new ImgAsset("assets/city-tileset.png", 16, 16, 0, 0);
 cityTileset.register();
 
-const sidewalk = {
-  column: 1,
-  row: 1,
+cityTileset.sidewalk = {
   frameWidth: 16,
   frameHeight: 16,
-  spriteSX: this.column * this.frameWidth,
-  spriteSY: this.row * this.frameHeight
+  spriteSX: 27 * 16,
+  spriteSY: 0
 }
+
+cityTileset.roadTop = {
+    frameWidth: 16,
+    frameHeight: 16,
+    spriteSX: 15 * 16,
+    spriteSY: 14 * 16
+  }
+
+ cityTileset.roadMid = {
+    frameWidth: 16,
+    frameHeight: 16,
+    spriteSX: 15 * 16,
+    spriteSY: 13 * 16
+  }
+  
+  cityTileset.roadBottom = {
+    frameWidth: 16,
+    frameHeight: 16,
+    spriteSX: 16 * 16,
+    spriteSY: 11 * 16
+  }
 
 function checkAssetsLoaded() {
    if (imagesLoaded === assetsArray.length) {

@@ -2,34 +2,37 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 
-class Game {
-  constructor() {
-    
-  }
-}
-
-
- /* Initializing the game */
+ /* Initializing the game
  let lola = new Dog(10, 10, 50, 50);
  let animationID = null;
  let gameOver = false;
  let objects = [];
  let cars = [];
- let carFrequency = 0;
-
-
- /* drop testing stuff here*/
+ let carFrequency = 0; */
+ let currentGame;
  let testObst = new Obstacle(100, 100, 50, 50, "red");
- let testRoad = new Road(500, 50);
- let testCar = new Car(250, 525, 16, 16, "blue");
- cars.push(testCar);
- createCar();
- objects.push(lola, testObst, testRoad, testCar);
+ //let testRoad = new Road(500, 64);
+ let testCar = new Car(250, 304, 64, 32, "blue");
 
- window.addEventListener('load', (event) => {
+ function startGame() {
+  //Instantiate new game
+  currentGame = new Game();
+  //Instantiate new dog & other objects here
+  let selectedDog = new Dog(canvas.width - 64, canvas.height - 64, 55, 35);
+  currentGame.lola = selectedDog;
+  currentGame.cars.push(testCar);
+ 
+  // currentGame.objects.push(selectedDog, testObst, testRoad, testCar); 
+  currentGame.objects.push(selectedDog, testObst, testCar);  
+  cancelAnimationFrame(currentGame.animationId);
   updateEverything();
+}
+
+window.addEventListener('load', (event) => {
+  startGame();
   });
  
+/* drop testing stuff here*/
 
 
 
@@ -47,15 +50,16 @@ function updateEverything() {
   ctx.fillStyle = "black";
   ctx.font = "20px Georgia";
   ctx.fillText("LOADING ASSETS", 50, 200);
-  animationID = requestAnimationFrame(updateEverything);
+  currentGame.animationID = requestAnimationFrame(updateEverything);
  } else {
 
 // If they are, proceed to the game loop
 
   clearCanvas();
+  drawMap();
   testObst.drawObstacle();
-  testRoad.drawObstacle();
-  lola.drawDog();
+  // testRoad.drawObstacle();
+  currentGame.lola.drawDog();
      
    /*
    
@@ -68,21 +72,20 @@ if (carFrequency % 200 === 1) {
 
 */
 
-    cars.forEach((car) => {
-      if (car.x < canvas.width) {
+currentGame.cars.forEach((car) => {
+      if (car.x + car.width < canvas.width) {
       car.moveRight();
       car.drawCar();
     } else {
       car.x = 0;
     }
-
-      gameOver = detectCollision(lola,car);
+    currentGame.gameOver = detectCollision(currentGame.lola,car);
     });
 
-   if (!gameOver) {
-    animationID = requestAnimationFrame(updateEverything);
+   if (!currentGame.gameOver) {
+    currentGame.animationID = requestAnimationFrame(updateEverything);
   } else {
-    cancelAnimationFrame(animationID);
+    cancelAnimationFrame(currentGame.animationID);
     clearCanvas();
     ctx.fillStyle = "black";
     ctx.font = "20px Georgia";
@@ -92,7 +95,7 @@ if (carFrequency % 200 === 1) {
  }
 
   document.addEventListener("keydown", (keyboardEvent) => {
-    lola.move(keyboardEvent.key);
+    currentGame.lola.move(keyboardEvent.key);
     });
 
  

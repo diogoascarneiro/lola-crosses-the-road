@@ -31,34 +31,21 @@ class Obstacle {
     if (this.x > 0 ) {
       this.x -= this.dx;
        }
-       if (hasCollided(this)) {
-        this.x += this.dx +1;
-      }
   }
   moveRight() {
     if (this.x < canvas.width - this.width ) {
       this.x += this.dx;
     }
-    // if (hasCollided(this)) {
-    //   this.x -= this.dx +1;
-    // }
   }
   
   moveUp() {
     if (this.y > 0 ) {
       this.y -= this.dy;
-    }
-    
-    if (hasCollided(this)) {
-      this.y += this.dy +1;
-    }
+    }     
   }
   moveDown() {
     if (this.y < canvas.height) {
       this.y += this.dy;
-    }
-    if (hasCollided(this)) {
-      this.y -= this.dy +1;
     }
   }
  }
@@ -91,7 +78,7 @@ class Obstacle {
         cityTileset.row = 8;
         let spriteSX = (cityTileset.column * cityTileset.frameWidth);
         let spriteSY = (cityTileset.row * cityTileset.frameHeight);
-        ctx.drawImage(cityTileset, spriteSX, spriteSY, cityTileset.frameWidth, cityTileset.frameHeight, this.x, this.y, cityTileset.frameWidth, cityTileset.frameHeight);
+        ctx.drawImage(cityTileset, spriteSX, spriteSY, cityTileset.frameWidth, cityTileset.frameHeight, this.x, this.y, cityTileset.frameWidth * 1.5, cityTileset.frameHeight * 1.5);
        break;
        case 'green':
 
@@ -104,15 +91,44 @@ class Obstacle {
 
   }
 
-  function createCar() {
-    let newCar = new Car(0, 525, 16, 16, "blue");
-    cars.push(newCar);
-    objects.push(newCar);
-  }
-
 /* PERSON CLASS */
 class Person extends MovingObstacle { 
   
+  moveLeft() {
+    if (this.x > 0 ) {
+      this.x -= this.dx;
+       }
+       if (hasCollided(this)) {
+        this.x += this.dx +1;
+      }
+  }
+  moveRight() {
+    if (this.x < canvas.width - this.width ) {
+      this.x += this.dx;
+    }
+    if (hasCollided(this)) {
+      this.x -= this.dx +1;
+    }
+  }
+  
+  moveUp() {
+    if (this.y > 0 ) {
+      this.y -= this.dy;
+    }
+    
+    if (hasCollided(this)) {
+      this.y += this.dy +1;
+    }
+  }
+  moveDown() {
+    if (this.y < canvas.height) {
+      this.y += this.dy;
+    }
+    if (hasCollided(this)) {
+      this.y -= this.dy +1;
+    }
+  }
+
   drawPerson() {
 
     // switch (this.type) {
@@ -156,9 +172,9 @@ class Person extends MovingObstacle {
 
   function hasCollided(entity) {
     let collision = null;
-    for (let i = 0; i < objects.length; i++) {
-      if (entity === objects[i]) {continue;}
-       else if (detectCollision(entity, objects[i]) === true) {
+    for (let i = 0; i < currentGame.objects.length; i++) {
+      if (entity === currentGame.objects[i]) {continue;}
+       else if (detectCollision(entity, currentGame.objects[i]) === true) {
         collision = true; break;
       } else {collision = false;}
     }

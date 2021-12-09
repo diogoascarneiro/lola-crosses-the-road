@@ -2,8 +2,8 @@ class Dog {
     constructor(x, y, width, height) {
         this.x = x;
         this.y = y;
-        this.dx = 5;
-        this.dy = 5;
+        this.dx = 8;
+        this.dy = 8;
         this.width = width;
         this.height = height;
         this.direction = "left";
@@ -18,7 +18,7 @@ class Dog {
               this.y -= this.dy;
             }
             
-            if (hasCollided(lola)) {
+            if (hasCollided(this)) {
               this.y += this.dy +1;
             }
             break;
@@ -26,7 +26,7 @@ class Dog {
             if (this.y < canvas.height) {
               this.y += this.dy;
             }
-            if (hasCollided(lola)) {
+            if (hasCollided(this)) {
               this.y -= this.dy +1;
             }
             break;
@@ -35,7 +35,7 @@ class Dog {
              if (this.x > 0 ) {
             this.x -= this.dx;
              }
-             if (hasCollided(lola)) {
+             if (hasCollided(this)) {
               this.x += this.dx +1;
             }
             break;
@@ -44,7 +44,7 @@ class Dog {
             if (this.x < canvas.width - this.width ) {
               this.x += this.dx;
             }
-            if (hasCollided(lola)) {
+            if (hasCollided(this)) {
               this.x -= this.dx +1;
             }
             break;
@@ -74,6 +74,8 @@ class Dog {
         * image = source image; sx and sy = the top/left coordinates to "slice" the img; sWidth & sHeight = the bottom/right coordinates to slice the img
         * dx, dy, dwidth & dheight = onde as colocar)
         */
+
+        // NEED TO MAKE THE DOG SPRITE INTO MULTIPLES OF 16!
         if (this.direction === "left") {
         let spriteSX = (lolaSpriteLeft.column * lolaSpriteLeft.frameWidth) + lolaSpriteLeft.wOffset;
         let spriteSY = (lolaSpriteLeft.row * lolaSpriteLeft.frameHeight) + lolaSpriteLeft.hOffset;

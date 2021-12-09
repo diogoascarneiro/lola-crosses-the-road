@@ -13,7 +13,7 @@ const ctx = canvas.getContext("2d");
  /* drop testing stuff here*/
  let testObst = new Obstacle(100, 100, 50, 50, "red");
  let testRoad = new Road(500, 50);
- let testCar = new Car(250, 525, 10, 10, "purple");
+ let testCar = new Car(250, 525, 16, 16, "blue");
  cars.push(testCar);
  createCar();
  objects.push(lola, testObst, testRoad, testCar);
@@ -63,7 +63,7 @@ if (carFrequency % 200 === 1) {
     cars.forEach((car) => {
       if (car.x < canvas.width) {
       car.moveRight();
-      car.drawObstacle();
+      car.drawCar();
     } else {
       car.x = 0;
     }

@@ -54,30 +54,32 @@ class Obstacle {
 
  /* CAR CLASS */
   class Car extends Obstacle {
-  constructor(color) {
-    super();
-    this.color = color;
-   }
-   
-  //  drawCar() {
+      
+    drawCar() {
 
-  //   switch (this.color) {
-  //     case 'blue':
+     switch (this.color) {
+      case 'blue':
+        cityTileset.frameWidth = 64;
+        cityTileset.frameHeight = 32;
+        cityTileset.column = 4.5;
+        cityTileset.row = 8;
+        let spriteSX = (cityTileset.column * cityTileset.frameWidth);
+        let spriteSY = (cityTileset.row * cityTileset.frameHeight);
+        ctx.drawImage(cityTileset, spriteSX, spriteSY, cityTileset.frameWidth, cityTileset.frameHeight, this.x, this.y, cityTileset.frameWidth, cityTileset.frameHeight);
+       break;
+       case 'green':
 
-  //     break;
-  //     case 'green':
+       break;
+       case 'red':
 
-  //     break;
-  //     case 'red':
-
-  //     break;
-  //   }
-  //  }
+       break;
+     }
+    }
 
   }
 
   function createCar() {
-    let newCar = new Car(0, 525, 10, 10, "purple");
+    let newCar = new Car(0, 525, 16, 16, "blue");
     cars.push(newCar);
     objects.push(newCar);
   }

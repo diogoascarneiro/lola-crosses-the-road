@@ -7,7 +7,7 @@
 
 /* MAIN OBSTACLE CLASS */
 class Obstacle {
-    constructor(x, y, width, height, color) {
+    constructor(x, y, width, height, color, type) {
       this.x = x;
       this.y = y;
       this.dx = 4;
@@ -15,6 +15,7 @@ class Obstacle {
       this.width = width;
       this.height = height;
       this.color = color;
+      this.type = type;
       }
   
     drawObstacle() {
@@ -22,38 +23,63 @@ class Obstacle {
       ctx.fillRect(this.x, this.y, this.width, this.height);
     }
 
-    moveLeft() {
-      if (this.x > 0) {
-        this.x -= this.dx;
-         }
-    }
-    moveRight() {
-      if (this.x < canvas.width) {
-        this.x += this.dx;
-      } 
-    }
-    
-    moveUp() {
-     if (this.y > 0) {
-       this.y -= this.dy;
-        }
-    }
-    moveDown() {
-      if (this.y < canvas.height) {
-        this.y += this.dy;
-      }
-    }
  }
 
+ class MovingObstacle extends Obstacle {
+
+  moveLeft() {
+    if (this.x > 0 ) {
+      this.x -= this.dx;
+       }
+       if (hasCollided(this)) {
+        this.x += this.dx +1;
+      }
+  }
+  moveRight() {
+    if (this.x < canvas.width - this.width ) {
+      this.x += this.dx;
+    }
+    // if (hasCollided(this)) {
+    //   this.x -= this.dx +1;
+    // }
+  }
+  
+  moveUp() {
+    if (this.y > 0 ) {
+      this.y -= this.dy;
+    }
+    
+    if (hasCollided(this)) {
+      this.y += this.dy +1;
+    }
+  }
+  moveDown() {
+    if (this.y < canvas.height) {
+      this.y += this.dy;
+    }
+    if (hasCollided(this)) {
+      this.y -= this.dy +1;
+    }
+  }
+ }
  /* ROAD CLASS */
   class Road extends Obstacle {
     constructor(y, height) {
        super(0, y, canvas.width, height, "lightgray");
       }
+
+      drawRoad() {
+        
+      }
+  }
+
+  /* TREE CLASS */
+  class Tree extends Obstacle {
+
   }
 
  /* CAR CLASS */
-  class Car extends Obstacle {
+  class Car extends MovingObstacle {
       
     drawCar() {
 
@@ -85,8 +111,20 @@ class Obstacle {
   }
 
 /* PERSON CLASS */
-class Person extends Obstacle { 
+class Person extends MovingObstacle { 
   
+  drawPerson() {
+
+    // switch (this.type) {
+    //   case 'man':
+       
+    //   break;
+    //   case 'woman':
+
+    //   break;
+    //  }
+
+}
 }
 
   /* COLLISION DETECTION

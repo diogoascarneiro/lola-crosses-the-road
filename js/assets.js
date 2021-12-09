@@ -17,6 +17,7 @@ class ImgAsset extends Image {
     }
     /* ver como passar isto imediatamente ao criar um novo objecto desta classe em vez de ter que chamar o metodo separadamente */
     register() {assetsArray.push(this);}
+    
  }
 
 /* LOLA'S SPRITE <3
@@ -32,9 +33,17 @@ lolaSpriteRight.column = 13.70;
 
 /* CITY TILESET */
 
-let cityTileset = new ImgAsset("assets/city-tileset.png", 16, 16, 0, 0);
+const cityTileset = new ImgAsset("assets/city-tileset.png", 16, 16, 0, 0);
 cityTileset.register();
 
+const sidewalk = {
+  column: 1,
+  row: 1,
+  frameWidth: 16,
+  frameHeight: 16,
+  spriteSX: this.column * this.frameWidth,
+  spriteSY: this.row * this.frameHeight
+}
 
 function checkAssetsLoaded() {
    if (imagesLoaded === assetsArray.length) {

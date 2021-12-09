@@ -1,6 +1,14 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
+
+class Game {
+  constructor() {
+    
+  }
+}
+
+
  /* Initializing the game */
  let lola = new Dog(10, 10, 50, 50);
  let animationID = null;

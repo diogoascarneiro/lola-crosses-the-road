@@ -62,6 +62,9 @@ for (let i = 0; i < 2; i++) {
 // How about some grass?
 
 for (let i = 0; i < canvas.width / 16; i++) {
+    simpleDraw(cityTileset, "grass", i * 16, 256, 1, 1);
+    simpleDraw(cityTileset, "grass", i * 16, 272, 1, 1);
+    simpleDraw(cityTileset, "grass", i * 16, 288, 1, 1);
     ctx.drawImage(cityTileset, cityTileset.grass.spriteSX, cityTileset.grass.spriteSY,
         cityTileset.grass.frameWidth, cityTileset.grass.frameHeight, i * 16, 256,
         cityTileset.grass.frameWidth, cityTileset.grass.frameHeight);
@@ -73,7 +76,10 @@ ctx.drawImage(cityTileset2, cityTileset2.shop.spriteSX, cityTileset2.shop.sprite
     cityTileset2.shop.frameWidth, cityTileset2.shop.frameHeight, 160, 160,
     cityTileset2.shop.frameWidth * 2, cityTileset2.shop.frameHeight * 2);
 
-  
+
+// Let's try to draw a person
+
+simpleDraw(peopleSet1, "male1down", 700, 100, 0.7, 0.7);
  // Let's make sure we draw all the objects we created!   
     currentGame.obstacles.forEach((obst) => {
         obst.drawObstacle()

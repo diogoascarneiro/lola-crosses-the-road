@@ -199,6 +199,21 @@ class Person extends MovingObstacle {
     if (hasCollided(this)) {
       this.y -= this.dy +1;
     }
+
+    // drawObstacle() {
+    //   switch (this.type) {
+    //     case "smallTree":
+    //     this.width = cityTileset.smallTree.frameWidth;
+    //     this.height = cityTileset.smallTree.frameHeight;
+    //     simpleDraw(cityTileset, "smallTree", this.x, this.y, this.widthMultiplier, this.heightMultiplier);
+    //     break;
+    //     case "bigTree":
+    //     this.width = cityTileset.bigTree.frameWidth * this.widthMultiplier;
+    //     this.height = cityTileset.bigTree.frameHeight * this.heightMultiplier;
+    //     simpleDraw(cityTileset, "bigTree", this.x, this.y, this.widthMultiplier, this.heightMultiplier);
+    //     break;
+    //   }
+    }
   }
 
   drawPerson() {

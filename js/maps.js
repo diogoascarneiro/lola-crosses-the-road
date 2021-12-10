@@ -1,24 +1,24 @@
- 
- /* Cheat Sheet - for studying 
-        * ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
-        * image = source image; sx and sy = the top/left coordinates to "slice" the img; sWidth & sHeight = the bottom/right coordinates to slice the img
-        * dx, dy, dwidth & dheight = onde as colocar)
-        */
+ /* Tired of writing these incredibly long drawImage functions? Use my patented solution, the simpleDraw function!
+ *  Simply feed the function the following arguments: 
+ *  imgObject = the imgAsset object aka tileset/sprite;
+ *  assetName = a string with the name of the specific item we want to draw. These are defined in assets.js
+ *  dx & dy = start coordinates to place the item
+ *  widthMultiplier & heightMultiplier = use these to make items smaller or bigger. E.g. 2 will double the width or height;
+ *  Try simpleDraw() for all your map drawing needs today! (note: solution not actually patented) */
 
-/*
-function cleanDraw(imgObj, assetObj, dx, dy, widthMultiplier, heightMultiplier) {
-    ctx.drawImage(imgObj, imgObj[assetObj].spriteSX, imgObj[assetObj].spriteSY,
-        imgObj[assetObj].frameWidth, imgObj[assetObj].frameHeight, dx, dy,
-        imgObj[assetObj].frameWidth * widthMultiplier, imgObj[assetObj].frameHeight * heightMultiplier);
+function simpleDraw(imgObj, assetName, dx, dy, widthMultiplier, heightMultiplier) {
+    ctx.drawImage(imgObj, imgObj[`${assetName}`].spriteSX, imgObj[`${assetName}`].spriteSY,
+    imgObj[`${assetName}`].frameWidth, imgObj[`${assetName}`].frameHeight, dx, dy,
+    imgObj[`${assetName}`].frameWidth * widthMultiplier, imgObj[`${assetName}`].frameHeight * heightMultiplier);
     }
- cleanDraw(cityTileset, cityTileset.smallTree, canvas.width - 50, 40, 1, 1);
-*/
 
 /* Note to self: make a billboard with LOLA coffee */
+
 function drawMap() {
  
     // Cover the map with bricks
-for (let i = 0; i < canvas.width / 32; i++) {
+
+  for (let i = 0; i < canvas.width / 32; i++) {
     for (let j = 0; j < canvas.height / 32; j++) { 
     ctx.drawImage(cityTileset, cityTileset.sidewalk.spriteSX, cityTileset.sidewalk.spriteSY,
         cityTileset.sidewalk.frameWidth, cityTileset.sidewalk.frameHeight, i * 32, j * 32,
@@ -64,6 +64,7 @@ ctx.drawImage(cityTileset, cityTileset.bigTree.spriteSX, cityTileset.bigTree.spr
     cityTileset.bigTree.frameWidth, cityTileset.bigTree.frameHeight, canvas.width - 300, 80,
     cityTileset.bigTree.frameWidth * 2, cityTileset.bigTree.frameHeight * 2);
 
+    simpleDraw(cityTileset, "bigTree", 90, 160, 2, 2);
 
 // How about some grass?
 
@@ -79,6 +80,6 @@ ctx.drawImage(cityTileset2, cityTileset2.shop.spriteSX, cityTileset2.shop.sprite
     cityTileset2.shop.frameWidth, cityTileset2.shop.frameHeight, 160, 160,
     cityTileset2.shop.frameWidth * 2, cityTileset2.shop.frameHeight * 2);
 
-
+    
 
 }

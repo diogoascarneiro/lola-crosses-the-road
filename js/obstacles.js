@@ -7,23 +7,82 @@
 
 /* MAIN OBSTACLE CLASS */
 class Obstacle {
-    constructor(x, y, width, height, color, type) {
+    constructor(x, y, width, height, type, widthMultiplier, heightMultiplier) {
       this.x = x;
       this.y = y;
       this.dx = 4;
       this.dy = 4;
       this.width = width;
       this.height = height;
-      this.color = color;
       this.type = type;
+      this.widthMultiplier = widthMultiplier;
+      this.heightMultiplier = heightMultiplier;
       }
   
-    drawObstacle() {
-      ctx.fillStyle = this.color;
-      ctx.fillRect(this.x, this.y, this.width, this.height);
+    register() {
+      currentGame.objects.push(this);
+      // currentGame.obstacles.push(this);
     }
+    
+    drawObstacle() {}
 
  }
+
+
+// GOAL CLASS
+
+class Goal extends Obstacle {
+  constructor(x, y, width, height, goalType) {
+      super();
+      this.asset = null;
+      this.x = x;
+      this.y = y;
+      this.width = width;
+      this.height = height;
+      this.goalType = goalType;
+  }
+
+  drawGoal() {
+ctx.drawImage(cityTileset2, cityTileset2.house1.spriteSX, cityTileset2.house1.spriteSY,
+cityTileset2.house1.frameWidth, cityTileset2.house1.frameHeight, this.x, this.y,
+cityTileset2.house1.frameWidth * 2, cityTileset2.house1.frameHeight * 2);
+  }
+
+  checkIfWon() {
+      if (detectCollision(currentGame.lola, this)) {
+          currentGame.wonGame = true;
+      }
+  }
+}
+
+class Tree extends Obstacle {
+  constructor(type, x, y, widthMultiplier, heightMultiplier) {
+    super();
+    this.x = x;
+    this.y = y;
+    this.type = type;
+    this.width = null;
+    this.height = null;
+    this.widthMultiplier = widthMultiplier;
+    this.heightMultiplier = heightMultiplier;
+  }
+  
+  drawObstacle() {
+    switch (this.type) {
+      case "smallTree":
+      this.width = cityTileset.smallTree.frameWidth;
+      this.height = cityTileset.smallTree.frameHeight;
+      simpleDraw(cityTileset, "smallTree", this.x, this.y, this.widthMultiplier, this.heightMultiplier);
+      break;
+      case "bigTree":
+      this.width = cityTileset.bigTree.frameWidth * this.widthMultiplier;
+      this.height = cityTileset.bigTree.frameHeight * this.heightMultiplier;
+      simpleDraw(cityTileset, "bigTree", this.x, this.y, this.widthMultiplier, this.heightMultiplier);
+      break;
+    }
+  }
+}
+ /* MOVING OBSTACLES HERE */
 
  class MovingObstacle extends Obstacle {
   moveLeft() {
@@ -50,7 +109,7 @@ class Obstacle {
   
  }
  /* ROAD CLASS */
-  class Road extends Obstacle {
+ /* class Road extends Obstacle {
     constructor(y, height) {
        super(0, y, canvas.width, height, "lightgray");
       }
@@ -58,21 +117,15 @@ class Obstacle {
       drawRoad() {
         
       }
-  }
+  }*/
 
-  /* TREE CLASS */
-  class Tree extends Obstacle {
-
-  }
-
- /* CAR CLASS */
+  /* CAR CLASS */
   class Car extends MovingObstacle {
-     
-    
+         
     drawCar() {
       let spriteSX = 0;
       let spriteSY = 0;
-     switch (this.color) {
+     switch (this.type) {
       case 'blue':
         cityTileset.frameWidth = this.width;
         cityTileset.frameHeight = this.height;
@@ -102,8 +155,13 @@ class Obstacle {
        break;
      }
     }
+ }
 
-  }
+ function createCar(x, y, width, height, color) {
+  let newCar = new Car(x, y, width, height, color);
+  currentGame.cars.push(newCar);
+  currentGame.objects.push(newCar);
+}
 
 /* PERSON CLASS */
 class Person extends MovingObstacle { 
@@ -186,9 +244,9 @@ class Person extends MovingObstacle {
 
   function hasCollided(entity) {
     let collision = null;
-    for (let i = 0; i < currentGame.objects.length; i++) {
-      if (entity === currentGame.objects[i]) {continue;}
-       else if (detectCollision(entity, currentGame.objects[i]) === true) {
+    for (let i = 0; i < currentGame.obstacles.length; i++) {
+      if (entity === currentGame.obstacles[i]) {continue;}
+       else if (detectCollision(entity, currentGame.obstacles[i]) === true) {
         collision = true; 
       } else {collision = false;}
     }

@@ -4,25 +4,38 @@ const ctx = canvas.getContext("2d");
 
 let currentGame;
 let readyToPlay = false;
-let testObst = new Obstacle(100, 100, 50, 50, "red");
 let hiScores = [];
 
  function startGame() {
   //Instantiate new game
   currentGame = new Game();
-  //Instantiate new dog & other objects here
+  //Instantiate key objects here
   let selectedDog = new Dog( 64, canvas.height - 256, 55, 35);
   let goal = new Goal(320, 160, 64, 48);
   let timer = new Chronometer();
   currentGame.timer = timer;
   currentGame.lola = selectedDog;
   currentGame.goal = goal;
-  currentGame.createCar(250, 304, 64, 32, "blue");
-  currentGame.createCar(600, 304, 48, 32, "green");
-  currentGame.createCar(900, 304, 64, 32, "red");
-  currentGame.objects.push(currentGame.lola, testObst, currentGame.goal);  
+  currentGame.objects.push(currentGame.lola, currentGame.goal);  
+  //Get some cars going
+  createCar(250, 304, 64, 32, "blue");
+  createCar(600, 304, 48, 32, "green");
+  createCar(900, 304, 64, 32, "red");
+  
+  //Then create some other obstacles
+  currentGame.obstacles.push(
+    new Tree("bigTree", 90, 160, 2, 2),
+    new Tree("smallTree", 500, 500, 2, 2),
+    new Tree("bigTree", 650, 700, 2, 2));
+  currentGame.obstacles.forEach(obst => obst.register());
+  
+
+  /* Reset the animation frame, start the timer, start the game */
   cancelAnimationFrame(currentGame.animationId);
   currentGame.timer.start(printTime);
+
+ 
+
   updateEverything();
 }
 
@@ -55,11 +68,9 @@ function clearCanvas() {
 function updateEverything() {
   clearCanvas();
   drawMap();
-  testObst.drawObstacle();
   currentGame.goal.drawGoal();
-  // testRoad.drawObstacle();
   currentGame.lola.drawDog();
-     
+      
    /*
    
    Isto abaixo gera um array cada vez maior. Pode ser fonte de problemas? - solução possivel - fazer um splice
@@ -70,6 +81,7 @@ if (carFrequency % 200 === 1) {
 }
 
 */
+
 
 /* need to make car loop properly. look into cars class */
 
@@ -83,6 +95,8 @@ currentGame.cars.forEach((car) => {
     if (detectCollision(currentGame.lola, car)) {currentGame.gameOver = true}
     });
 
+  // CHECK FOR GAME OVERS AND GAME WINS
+
    if (!currentGame.gameOver && !currentGame.wonGame) {
     currentGame.animationID = requestAnimationFrame(updateEverything);
   } else {
@@ -94,7 +108,8 @@ currentGame.cars.forEach((car) => {
       ctx.font = "20px Georgia";
       ctx.fillText("Oh noes! Game Over!", 50, 200);
       ctx.fillText("PRESS ENTER TO PLAY AGAIN", 50, 400);
-      currentGame.timer.stop().reset();
+      currentGame.timer.stop()
+      currentGame.timer.reset();
       } else if (currentGame.wonGame) {
       readyToPlay = true;
       ctx.fillStyle = "black";
@@ -103,7 +118,7 @@ currentGame.cars.forEach((car) => {
       ctx.fillText("PRESS ENTER TO PLAY AGAIN", 50, 400);
       currentGame.timer.stop();
       hiScores.push(currentGame.timer.split());
-      clearHiScores()
+      clearHiScores();
       sortHiScores(hiScores);
       printHiScores(hiScores);
     }

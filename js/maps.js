@@ -12,6 +12,10 @@ function simpleDraw(imgObj, assetName, dx, dy, widthMultiplier, heightMultiplier
     imgObj[`${assetName}`].frameWidth * widthMultiplier, imgObj[`${assetName}`].frameHeight * heightMultiplier);
     }
 
+/* Create obstacles here and register them */
+
+
+  
 /* Note to self: make a billboard with LOLA coffee */
 
 function drawMap() {
@@ -53,18 +57,7 @@ for (let i = 0; i < 2; i++) {
         cityTileset.crosswalk.frameWidth * 4, cityTileset.crosswalk.frameHeight * 4);
 }
 
-// Draw a tree. It looks cute
-ctx.drawImage(cityTileset, cityTileset.smallTree.spriteSX, cityTileset.smallTree.spriteSY,
-    cityTileset.smallTree.frameWidth, cityTileset.smallTree.frameHeight, canvas.width - 100, 50,
-    cityTileset.smallTree.frameWidth * 2, cityTileset.smallTree.frameHeight * 2);
 
-// Now a big one. 
-
-ctx.drawImage(cityTileset, cityTileset.bigTree.spriteSX, cityTileset.bigTree.spriteSY,
-    cityTileset.bigTree.frameWidth, cityTileset.bigTree.frameHeight, canvas.width - 300, 80,
-    cityTileset.bigTree.frameWidth * 2, cityTileset.bigTree.frameHeight * 2);
-
-    simpleDraw(cityTileset, "bigTree", 90, 160, 2, 2);
 
 // How about some grass?
 
@@ -80,6 +73,11 @@ ctx.drawImage(cityTileset2, cityTileset2.shop.spriteSX, cityTileset2.shop.sprite
     cityTileset2.shop.frameWidth, cityTileset2.shop.frameHeight, 160, 160,
     cityTileset2.shop.frameWidth * 2, cityTileset2.shop.frameHeight * 2);
 
+  
+ // Let's make sure we draw all the objects we created!   
+    currentGame.obstacles.forEach((obst) => {
+        obst.drawObstacle()
+        });
     
 
 }

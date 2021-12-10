@@ -12,12 +12,27 @@
     <h1>LOLA CROSSES THE ROAD</h1>
     <section class="container-fluid">
         <div class="row">
-          <div class="col-2"></div>
-          <div class="col-8">
+          <div class="col-10">
             <canvas id="canvas" height="800px" width="1280px"></canvas>
           </div>
-          <div class="col-2"></div>
-            </div>
+          <div class="col-2">
+          <h5>CURRENT TIME:</h5>
+          <section id="clock">
+            <div id="sphere">
+              <span id="minDec" class="number">0</span>
+              <span id="minUni" class="number">0</span>
+              <span>:</span>
+              <span id="secDec" class="number">0</span>
+              <span id="secUni" class="number">0</span>
+              <div id="milliseconds">
+                <span id="milDec">0</span>
+                <span id="milUni">0</span>
+              </div>
+          </div>
+          </section>
+          <h5>HIGH SCORES:</h5>
+          <ol id="splits"></ol>
+        </div> </div>
            </div>
     </section>
     
@@ -28,6 +43,7 @@
     <script src="js/Dog.js"></script>
     <script src="js/Obstacles.js"></script>
     <script src="js/assets.js"></script>
+    <script src="js/Chronometer.js"></script>
     <script src="js/Game.js"></script>
     <script src="js/main.js"></script>    
     <script src="js/maps.js"></script>

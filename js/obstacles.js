@@ -189,7 +189,7 @@ class Person extends MovingObstacle {
     for (let i = 0; i < currentGame.objects.length; i++) {
       if (entity === currentGame.objects[i]) {continue;}
        else if (detectCollision(entity, currentGame.objects[i]) === true) {
-        collision = true; break;
+        collision = true; 
       } else {collision = false;}
     }
     return collision

@@ -17,7 +17,9 @@ class Dog {
             if (this.y > 0 ) {
               this.y -= this.dy;
             }
-            
+            if (currentGame.goal.checkIfWon()) {
+              currentGame.wonGame = true
+            }
             if (hasCollided(this)) {
               this.y += this.dy +1;
             }
@@ -25,6 +27,9 @@ class Dog {
           case "ArrowDown":
             if (this.y < canvas.height) {
               this.y += this.dy;
+            }
+            if (currentGame.goal.checkIfWon()) {
+              currentGame.wonGame = true
             }
             if (hasCollided(this)) {
               this.y -= this.dy +1;
@@ -35,6 +40,9 @@ class Dog {
              if (this.x > 0 ) {
             this.x -= this.dx;
              }
+             if (currentGame.goal.checkIfWon()) {
+              currentGame.wonGame = true
+            }
              if (hasCollided(this)) {
               this.x += this.dx +1;
             }
@@ -43,6 +51,9 @@ class Dog {
             this.animWalkRight();
             if (this.x < canvas.width - this.width ) {
               this.x += this.dx;
+            }
+            if (currentGame.goal.checkIfWon()) {
+              currentGame.wonGame = true
             }
             if (hasCollided(this)) {
               this.x -= this.dx +1;

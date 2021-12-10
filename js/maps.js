@@ -14,6 +14,7 @@ function cleanDraw(imgObj, assetObj, dx, dy, widthMultiplier, heightMultiplier) 
  cleanDraw(cityTileset, cityTileset.smallTree, canvas.width - 50, 40, 1, 1);
 */
 
+/* Note to self: make a billboard with LOLA coffee */
 function drawMap() {
  
     // Cover the map with bricks
@@ -72,6 +73,11 @@ for (let i = 0; i < canvas.width / 16; i++) {
         cityTileset.grass.frameWidth, cityTileset.grass.frameHeight);
 }
 
+// Let's draw a shop
+
+ctx.drawImage(cityTileset2, cityTileset2.shop.spriteSX, cityTileset2.shop.spriteSY,
+    cityTileset2.shop.frameWidth, cityTileset2.shop.frameHeight, 160, 160,
+    cityTileset2.shop.frameWidth * 2, cityTileset2.shop.frameHeight * 2);
 
 
 

@@ -6,7 +6,7 @@ class Dog {
         this.dy = 8;
         this.width = width;
         this.height = height;
-        this.direction = "left";
+        this.direction = "right";
     }
 
     /* Movement method. */

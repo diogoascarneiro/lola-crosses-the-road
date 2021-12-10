@@ -26,28 +26,28 @@ class Obstacle {
  }
 
  class MovingObstacle extends Obstacle {
-
   moveLeft() {
     if (this.x > 0 ) {
       this.x -= this.dx;
-       }
+       }      
   }
   moveRight() {
     if (this.x < canvas.width - this.width ) {
       this.x += this.dx;
-    }
+    }   
   }
   
   moveUp() {
     if (this.y > 0 ) {
       this.y -= this.dy;
-    }     
+    }    
   }
   moveDown() {
     if (this.y < canvas.height) {
       this.y += this.dy;
     }
   }
+  
  }
  /* ROAD CLASS */
   class Road extends Obstacle {
@@ -67,7 +67,8 @@ class Obstacle {
 
  /* CAR CLASS */
   class Car extends MovingObstacle {
-      
+     
+    
     drawCar() {
       let spriteSX = 0;
       let spriteSY = 0;

@@ -18,15 +18,14 @@ const ctx = canvas.getContext("2d");
   //Instantiate new game
   currentGame = new Game();
   //Instantiate new dog & other objects here
-  let selectedDog = new Dog(canvas.width - 64, canvas.height - 256, 55, 35);
+  let selectedDog = new Dog( 64, canvas.height - 256, 55, 35);
+  let goal = new Goal(320, 160);
   currentGame.lola = selectedDog;
+  currentGame.goal = goal;
   currentGame.createCar(250, 304, 64, 32, "blue");
   currentGame.createCar(600, 304, 48, 32, "green");
   currentGame.createCar(900, 304, 64, 32, "red");
-  // currentGame.cars.push(testCar);
- 
-  // currentGame.objects.push(selectedDog, testObst, testRoad, testCar); 
-  currentGame.objects.push(selectedDog, testObst);  
+  currentGame.objects.push(currentGame.lolacurrentGame, testObst, currentgame.goal);  
   cancelAnimationFrame(currentGame.animationId);
   updateEverything();
 }
@@ -61,6 +60,7 @@ function updateEverything() {
   clearCanvas();
   drawMap();
   testObst.drawObstacle();
+  currentGame.goal.drawGoal();
   // testRoad.drawObstacle();
   currentGame.lola.drawDog();
      
@@ -84,18 +84,27 @@ currentGame.cars.forEach((car) => {
     } else {
       car.x = canvas.width;
     }
-    currentGame.gameOver = detectCollision(currentGame.lola,car);
+    if (detectCollision(currentGame.lola, car)) {currentGame.gameOver = true}
+    //currentGame.gameOver = detectCollision(currentGame.lola, car);
     });
 
-   if (!currentGame.gameOver) {
+   if (!currentGame.gameOver && !currentGame.wonGame) {
     currentGame.animationID = requestAnimationFrame(updateEverything);
   } else {
     cancelAnimationFrame(currentGame.animationID);
     clearCanvas();
-    ctx.fillStyle = "black";
-    ctx.font = "20px Georgia";
-    ctx.fillText("Oh noes! Game Over!", 50, 200);
+    if (currentGame.gameOver) {
+      ctx.fillStyle = "black";
+      ctx.font = "20px Georgia";
+      ctx.fillText("Oh noes! Game Over!", 50, 200);
+    } else if (currentGame.wonGame) {
+      ctx.fillStyle = "black";
+      ctx.font = "20px Georgia";
+      ctx.fillText("YA DID IT LOLA, YA CROSSED THE ROAD", 50, 200);
+    }
+    
   }
+
 }
  }
 

@@ -243,13 +243,15 @@ class Person extends MovingObstacle {
   }
 
   function hasCollided(entity) {
-    let collision = null;
+    let collision;
+    collision = null;
     for (let i = 0; i < currentGame.obstacles.length; i++) {
       if (entity === currentGame.obstacles[i]) {continue;}
        else if (detectCollision(entity, currentGame.obstacles[i]) === true) {
-        collision = true; 
+        collision = true; break;
       } else {collision = false;}
     }
     return collision
   }
+  
   

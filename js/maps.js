@@ -5,6 +5,15 @@
         * dx, dy, dwidth & dheight = onde as colocar)
         */
 
+/*
+function cleanDraw(imgObj, assetObj, dx, dy, widthMultiplier, heightMultiplier) {
+    ctx.drawImage(imgObj, imgObj[assetObj].spriteSX, imgObj[assetObj].spriteSY,
+        imgObj[assetObj].frameWidth, imgObj[assetObj].frameHeight, dx, dy,
+        imgObj[assetObj].frameWidth * widthMultiplier, imgObj[assetObj].frameHeight * heightMultiplier);
+    }
+ cleanDraw(cityTileset, cityTileset.smallTree, canvas.width - 50, 40, 1, 1);
+*/
+
 function drawMap() {
  
     // Cover the map with bricks
@@ -16,7 +25,7 @@ for (let i = 0; i < canvas.width / 32; i++) {
     }
 }
 
-// Draw the road - first the top, then mid, then bottom
+// Draw the road - first the top, then bottom
 for (let i = 0; i < canvas.width / 64; i++) {
     ctx.drawImage(cityTileset, cityTileset.roadTop.spriteSX, cityTileset.roadTop.spriteSY,
         cityTileset.roadTop.frameWidth, cityTileset.roadTop.frameHeight, i * 64, 304,
@@ -24,15 +33,46 @@ for (let i = 0; i < canvas.width / 64; i++) {
 }
 
 for (let i = 0; i < canvas.width / 64; i++) {
-    ctx.drawImage(cityTileset, cityTileset.roadMid.spriteSX, cityTileset.roadMid.spriteSY,
-        cityTileset.roadMid.frameWidth, cityTileset.roadMid.frameHeight, i * 64, 368,
-        cityTileset.roadMid.frameWidth * 4, cityTileset.roadMid.frameHeight * 4);
+    ctx.drawImage(cityTileset, cityTileset.roadBottom.spriteSX, cityTileset.roadBottom.spriteSY,
+        cityTileset.roadBottom.frameWidth, cityTileset.roadBottom.frameHeight, i * 64, 368,
+        cityTileset.roadBottom.frameWidth * 4, cityTileset.roadBottom.frameHeight * 4);
 }
 
-// for (let i = 0; i < canvas.width / 32; i++) {
-//     ctx.drawImage(cityTileset, cityTileset.roadBottom.spriteSX, cityTileset.roadBottom.spriteSY,
-//         cityTileset.roadBottom.frameWidth, cityTileset.roadBottom.frameHeight, i * 32, 368,
-//         cityTileset.roadBottom.frameWidth * 2, cityTileset.roadBottom.frameHeight * 2);
-// }
+// Gotta test those crosswalks too.
+
+for (let i = 0; i < 2; i++) {
+    ctx.drawImage(cityTileset, cityTileset.crosswalk.spriteSX, cityTileset.crosswalk.spriteSY,
+        cityTileset.crosswalk.frameWidth, cityTileset.crosswalk.frameHeight, 256, 304 + (i * 64),
+        cityTileset.crosswalk.frameWidth * 4, cityTileset.crosswalk.frameHeight * 4);
+}
+
+for (let i = 0; i < 2; i++) {
+    ctx.drawImage(cityTileset, cityTileset.crosswalk.spriteSX, cityTileset.crosswalk.spriteSY,
+        cityTileset.crosswalk.frameWidth, cityTileset.crosswalk.frameHeight, 256 * 4, 304 + (i * 64),
+        cityTileset.crosswalk.frameWidth * 4, cityTileset.crosswalk.frameHeight * 4);
+}
+
+// Draw a tree. It looks cute
+ctx.drawImage(cityTileset, cityTileset.smallTree.spriteSX, cityTileset.smallTree.spriteSY,
+    cityTileset.smallTree.frameWidth, cityTileset.smallTree.frameHeight, canvas.width - 100, 50,
+    cityTileset.smallTree.frameWidth * 2, cityTileset.smallTree.frameHeight * 2);
+
+// Now a big one. 
+
+ctx.drawImage(cityTileset, cityTileset.bigTree.spriteSX, cityTileset.bigTree.spriteSY,
+    cityTileset.bigTree.frameWidth, cityTileset.bigTree.frameHeight, canvas.width - 300, 80,
+    cityTileset.bigTree.frameWidth * 2, cityTileset.bigTree.frameHeight * 2);
+
+
+// How about some grass?
+
+for (let i = 0; i < canvas.width / 16; i++) {
+    ctx.drawImage(cityTileset, cityTileset.grass.spriteSX, cityTileset.grass.spriteSY,
+        cityTileset.grass.frameWidth, cityTileset.grass.frameHeight, i * 16, 256,
+        cityTileset.grass.frameWidth, cityTileset.grass.frameHeight);
+}
+
+
+
 
 }

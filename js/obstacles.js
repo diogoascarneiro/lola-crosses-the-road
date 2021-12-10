@@ -69,22 +69,35 @@ class Obstacle {
   class Car extends MovingObstacle {
       
     drawCar() {
-
+      let spriteSX = 0;
+      let spriteSY = 0;
      switch (this.color) {
       case 'blue':
-        cityTileset.frameWidth = 64;
-        cityTileset.frameHeight = 32;
+        cityTileset.frameWidth = this.width;
+        cityTileset.frameHeight = this.height;
         cityTileset.column = 4.5;
         cityTileset.row = 8;
-        let spriteSX = (cityTileset.column * cityTileset.frameWidth);
-        let spriteSY = (cityTileset.row * cityTileset.frameHeight);
+        spriteSX = (cityTileset.column * cityTileset.frameWidth);
+        spriteSY = (cityTileset.row * cityTileset.frameHeight);
         ctx.drawImage(cityTileset, spriteSX, spriteSY, cityTileset.frameWidth, cityTileset.frameHeight, this.x, this.y, cityTileset.frameWidth * 1.5, cityTileset.frameHeight * 1.5);
        break;
        case 'green':
-
+        cityTileset.frameWidth = this.width;
+        cityTileset.frameHeight = this.height;
+        cityTileset.column = 5;
+        cityTileset.row = 8;
+        spriteSX = (cityTileset.column * cityTileset.frameWidth);
+        spriteSY = (cityTileset.row * cityTileset.frameHeight);
+        ctx.drawImage(cityTileset, spriteSX, spriteSY, cityTileset.frameWidth, cityTileset.frameHeight, this.x, this.y, cityTileset.frameWidth * 1.5, cityTileset.frameHeight * 1.5);
        break;
        case 'red':
-
+        cityTileset.frameWidth = this.width;
+        cityTileset.frameHeight = this.height;
+        cityTileset.column = 2.8;
+        cityTileset.row = 8;
+        spriteSX = (cityTileset.column * cityTileset.frameWidth);
+        spriteSY = (cityTileset.row * cityTileset.frameHeight);
+        ctx.drawImage(cityTileset, spriteSX, spriteSY, cityTileset.frameWidth, cityTileset.frameHeight, this.x, this.y, cityTileset.frameWidth * 1.5, cityTileset.frameHeight * 1.5);
        break;
      }
     }

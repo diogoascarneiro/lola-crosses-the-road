@@ -8,8 +8,8 @@ class Game {
         this.carFrequency = 0;
     }
 
-    createCar() {
-        let newCar = new Car(0, 525, 64, 32, "blue");
+    createCar(x, y, width, height, color) {
+        let newCar = new Car(x, y, width, height, color);
         this.cars.push(newCar);
         this.objects.push(newCar);
       }

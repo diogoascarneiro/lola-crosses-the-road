@@ -50,18 +50,39 @@ cityTileset.roadTop = {
     spriteSY: 14 * 16
   }
 
- cityTileset.roadMid = {
+ cityTileset.roadBottom = {
     frameWidth: 16,
     frameHeight: 16,
     spriteSX: 15 * 16,
     spriteSY: 13 * 16
   }
   
-  cityTileset.roadBottom = {
+  cityTileset.smallTree = {
+    frameWidth: 16,
+    frameHeight: 32,
+    spriteSX: 9 * 16,
+    spriteSY: 9 * 16
+  }
+  
+  cityTileset.bigTree = {
+    frameWidth: 48,
+    frameHeight: 48,
+    spriteSX: 8 * 16,
+    spriteSY: 11 * 16
+  }
+
+  cityTileset.grass = {
     frameWidth: 16,
     frameHeight: 16,
-    spriteSX: 16 * 16,
-    spriteSY: 11 * 16
+    spriteSX: 8 * 16,
+    spriteSY: 9 * 16
+  }
+
+  cityTileset.crosswalk = {
+    frameWidth: 16,
+    frameHeight: 16,
+    spriteSX: 13 * 16,
+    spriteSY: 2 * 16
   }
 
 function checkAssetsLoaded() {

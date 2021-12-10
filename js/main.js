@@ -12,18 +12,21 @@ const ctx = canvas.getContext("2d");
  let currentGame;
  let testObst = new Obstacle(100, 100, 50, 50, "red");
  //let testRoad = new Road(500, 64);
- let testCar = new Car(250, 304, 64, 32, "blue");
+//  let testCar = new Car(250, 304, 64, 32, "blue");
 
  function startGame() {
   //Instantiate new game
   currentGame = new Game();
   //Instantiate new dog & other objects here
-  let selectedDog = new Dog(canvas.width - 64, canvas.height - 64, 55, 35);
+  let selectedDog = new Dog(canvas.width - 64, canvas.height - 256, 55, 35);
   currentGame.lola = selectedDog;
-  currentGame.cars.push(testCar);
+  currentGame.createCar(250, 304, 64, 32, "blue");
+  currentGame.createCar(600, 304, 48, 32, "green");
+  currentGame.createCar(900, 304, 64, 32, "red");
+  // currentGame.cars.push(testCar);
  
   // currentGame.objects.push(selectedDog, testObst, testRoad, testCar); 
-  currentGame.objects.push(selectedDog, testObst, testCar);  
+  currentGame.objects.push(selectedDog, testObst);  
   cancelAnimationFrame(currentGame.animationId);
   updateEverything();
 }
@@ -72,12 +75,14 @@ if (carFrequency % 200 === 1) {
 
 */
 
+/* need to make car loop properly. look into cars class */
+
 currentGame.cars.forEach((car) => {
-      if (car.x + car.width < canvas.width) {
-      car.moveRight();
+      if (car.x - car.width > 0) {
+      car.moveLeft();
       car.drawCar();
     } else {
-      car.x = 0;
+      car.x = canvas.width;
     }
     currentGame.gameOver = detectCollision(currentGame.lola,car);
     });

@@ -1,5 +1,8 @@
+body {
+  overflow: hidden;
+}
 #canvas {
-    border:6px solid black
+  border: 6px solid black;
 }
 
 /* Chronometer styles */
@@ -8,42 +11,41 @@
     src: url('fonts/ds-digib.ttf');
   } */
 
-  #clock {
-    border: 2px solid #000;
-    border-radius: 20px;
-    box-sizing: border-box;
-    height: 250px;
-    padding: 18px 0;
-    width: 245px;
-  }
-  
-  #sphere {
-    border: 2px solid #000;
-    border-radius: 20px;
-    box-sizing: border-box;
-    /* font-family: 'Digi'; */
-    font-size: 80px;
-    height: 210px;
-    margin: 0 auto;
-    padding: 35px 0;
-    position: relative;
-    text-align: center;
-    width: 220px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
-  
-  #splits-container {
-    font-size: 20px;
-    font-weight: 100;
-    position: absolute;
-    left: 50px;
-  }
-  
-  #milliseconds {
-    font-size: 36px;
-    position: absolute;
-    top: 20px;
-  }
-  
+#clock {
+  border: 2px solid #000;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: 250px;
+  padding: 18px 0;
+  width: 245px;
+}
+
+#sphere {
+  border: 2px solid #000;
+  border-radius: 20px;
+  box-sizing: border-box;
+  /* font-family: 'Digi'; */
+  font-size: 80px;
+  height: 210px;
+  margin: 0 auto;
+  padding: 35px 0;
+  position: relative;
+  text-align: center;
+  width: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#splits-container {
+  font-size: 20px;
+  font-weight: 100;
+  position: absolute;
+  left: 50px;
+}
+
+#milliseconds {
+  font-size: 36px;
+  position: absolute;
+  top: 20px;
+}

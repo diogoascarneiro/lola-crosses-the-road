@@ -88,12 +88,12 @@ if (carFrequency % 200 === 1) {
 }
 
 */
-currentGame.peopleSpeed++;
-if (currentGame.peopleSpeed % 50 === 1) {
-currentGame.people.forEach(person => {
-  person.moveRandom();
-})
-}
+  currentGame.peopleSpeed++;
+  if (currentGame.peopleSpeed % 50 === 1) {
+  currentGame.people.forEach(person => {
+    person.moveRandom();
+  })
+  }
 
 /* need to make car loop properly. look into cars class */
 
@@ -104,10 +104,11 @@ currentGame.cars.forEach((car) => {
     } else {
       car.x = canvas.width;
     }
-    if (detectCollision(currentGame.lola, car)) {currentGame.gameOver = true}
+    if (detectCollision(currentGame.lola, car)) {
+      currentGame.gameOver = true}
     });
 
-  // CHECK FOR GAME OVERS AND GAME WINS
+  // CHECK FOR GAME OVERS AND GAME WINS - fazer funções para isto para simplificar codigo
 
    if (!currentGame.gameOver && !currentGame.wonGame) {
     currentGame.animationID = requestAnimationFrame(updateEverything);

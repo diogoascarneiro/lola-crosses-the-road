@@ -22,20 +22,27 @@ let hiScores = [];
   createCar(600, 304, 48, 32, "green");
   createCar(900, 304, 64, 32, "red");
   
-  //Then create some other obstacles
-  currentGame.obstacles.push(
+  //Then create some people
+   currentGame.obstacles.push(
+     new Person("male1", 40, 40, 0.7, 0.7, "down"),
+     new Person("male1", canvas.width - 40, 40, 0.7, 0.7, "down"),
+     new Person("male1", 40, canvas.height - 80, 0.7, 0.7, "down")
+     );
+    
+   // And some static obstacles
+
+   currentGame.obstacles.push(
     new Tree("bigTree", 90, 160, 2, 2),
     new Tree("smallTree", 500, 500, 2, 2),
-    new Tree("bigTree", 650, 700, 2, 2));
-  currentGame.obstacles.forEach(obst => obst.register());
-  
-
-  /* Reset the animation frame, start the timer, start the game */
-  cancelAnimationFrame(currentGame.animationId);
-  currentGame.timer.start(printTime);
+    new Tree("bigTree", 650, 700, 2, 2),
+   );
 
  
 
+  /* Register obstacles, reset the animation frame, start the timer, start the game */
+  currentGame.obstacles.forEach(obst => obst.register());
+  cancelAnimationFrame(currentGame.animationId);
+  currentGame.timer.start(printTime);
   updateEverything();
 }
 
@@ -81,7 +88,12 @@ if (carFrequency % 200 === 1) {
 }
 
 */
-
+currentGame.peopleSpeed++;
+if (currentGame.peopleSpeed % 50 === 1) {
+currentGame.people.forEach(person => {
+  person.moveRandom();
+})
+}
 
 /* need to make car loop properly. look into cars class */
 

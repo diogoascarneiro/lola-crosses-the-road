@@ -8,9 +8,12 @@ class Game {
         this.cars = [];
         this.carFrequency = 0;
         this.wonGame = false;
+        this.people = [];
+        this.peopleSpeed = 0;
     }
+}
 
-    
- }
-
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
   

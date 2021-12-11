@@ -4,14 +4,29 @@
  *  assetName = a string with the name of the specific item we want to draw. These are defined in assets.js
  *  dx & dy = start coordinates to place the item
  *  widthMultiplier & heightMultiplier = use these to make items smaller or bigger. E.g. 2 will double the width or height;
- *  Try simpleDraw() for all your map drawing needs today! (note: solution not actually patented) */
+ *  direction = the direction of the asset
+ *  Try simpleDraw() for all your map drawing needs today! (note: solution not actually patented) 
+ */
 
-function simpleDraw(imgObj, assetName, dx, dy, widthMultiplier, heightMultiplier) {
+function simpleDraw(imgObj, assetName, dx, dy, widthMultiplier, heightMultiplier, direction) {
+    if (!direction) {
     ctx.drawImage(imgObj, imgObj[`${assetName}`].spriteSX, imgObj[`${assetName}`].spriteSY,
     imgObj[`${assetName}`].frameWidth, imgObj[`${assetName}`].frameHeight, dx, dy,
     imgObj[`${assetName}`].frameWidth * widthMultiplier, imgObj[`${assetName}`].frameHeight * heightMultiplier);
-    }
+} else {
+    ctx.drawImage(imgObj, imgObj[`${assetName}`][`${direction}`].spriteSX, imgObj[`${assetName}`][`${direction}`].spriteSY,
+    imgObj[`${assetName}`].frameWidth, imgObj[`${assetName}`].frameHeight, dx, dy,
+    imgObj[`${assetName}`].frameWidth * widthMultiplier, imgObj[`${assetName}`].frameHeight * heightMultiplier);
+}
+   }
 
+//    function simpleDraw(imgObj, assetName, dx, dy, widthMultiplier, heightMultiplier) {
+//     ctx.drawImage(imgObj, imgObj[`${assetName}`].spriteSX, imgObj[`${assetName}`].spriteSY,
+//     imgObj[`${assetName}`].frameWidth, imgObj[`${assetName}`].frameHeight, dx, dy,
+//     imgObj[`${assetName}`].frameWidth * widthMultiplier, imgObj[`${assetName}`].frameHeight * heightMultiplier);
+// } 
+
+    
 /* Create obstacles here and register them */
 
 
@@ -77,10 +92,9 @@ ctx.drawImage(cityTileset2, cityTileset2.shop.spriteSX, cityTileset2.shop.sprite
     cityTileset2.shop.frameWidth * 2, cityTileset2.shop.frameHeight * 2);
 
 
-// Let's try to draw a person
 
-simpleDraw(peopleSet1, "male1down", 700, 100, 0.7, 0.7);
- // Let's make sure we draw all the objects we created!   
+ // Let's make sure we draw all the objects we created!  
+
     currentGame.obstacles.forEach((obst) => {
         obst.drawObstacle()
         });

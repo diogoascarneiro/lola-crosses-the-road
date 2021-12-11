@@ -119,11 +119,15 @@ cityTileset.roadTop = {
 const peopleSet1 = new ImgAsset("assets/people1.png", 48, 72, 0, 30);
 peopleSet1.register();
 
-peopleSet1.male1down = {
+peopleSet1.male1 = {
     frameWidth: 48,
     frameHeight: 72,
-    spriteSX: 1 * 48,
-    spriteSY: 0    
+    up: {spriteSX: 1 * 48, spriteSY: 6 * 48},  
+    down: {spriteSX: 1 * 48, spriteSY: 0},
+    left: {spriteSX: 1 * 48, spriteSY: 2 * 48},
+    right: {spriteSX: 1 * 48, spriteSY: 4 * 48}      
 }
+
+
 // const male3run = new ImgAsset("assets/male1-32x24.png", 32, 24, 0, 0);
 // male3run.register();

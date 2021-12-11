@@ -79,11 +79,7 @@ class Dog {
   }
   /* drawing animations starts here */
   drawDog() {
-    /* Cheat Sheet - for studying
-     * ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
-     * image = source image; sx and sy = the top/left coordinates to "slice" the img; sWidth & sHeight = the bottom/right coordinates to slice the img
-     * dx, dy, dwidth & dheight = onde as colocar)
-     */
+    
 
     // NEED TO MAKE THE DOG SPRITE INTO MULTIPLES OF 16!
     if (this.direction === "left") {

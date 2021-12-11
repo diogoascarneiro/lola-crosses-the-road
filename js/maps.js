@@ -1,3 +1,9 @@
+/* Cheat Sheet - for studying
+     * ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+     * image = source image; sx and sy = the top/left coordinates to "slice" the img; sWidth & sHeight = the bottom/right coordinates to slice the img
+     * dx, dy, dwidth & dheight = onde as colocar)
+     */
+
 /* Tired of writing these incredibly long drawImage functions? Use my patented solution, the simpleDraw function!
  *  Simply feed the function the following arguments:
  *  imgObject = the imgAsset object aka tileset/sprite;
@@ -146,9 +152,12 @@ function drawMap() {
     cityTileset2.shop.frameHeight * 2
   );
 
-  // Let's make sure we draw all the objects we created!
+  // Let's make sure we draw all the static obstacles and crosswalks we created!
 
   currentGame.obstacles.forEach((obst) => {
     obst.drawObstacle();
+  });
+  currentGame.crosswalks.forEach((cw) => {
+    cw.drawCrosswalk();
   });
 }

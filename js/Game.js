@@ -10,6 +10,7 @@ class Game {
     this.wonGame = false;
     this.people = [];
     this.peopleSpeed = 0;
+    this.crosswalks = [];
   }
 }
 

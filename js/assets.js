@@ -143,5 +143,36 @@ peopleSet1.male1 = {
   right: { spriteSX: 1 * 48, spriteSY: 4 * 48 },
 };
 
+peopleSet1.male2 = {
+  frameWidth: 48,
+  frameHeight: 72,
+  up: { spriteSX: 7 * 48, spriteSY: 6 * 48 },
+  down: { spriteSX: 7 * 48, spriteSY: 0 },
+  left: { spriteSX: 7 * 48, spriteSY: 2 * 48 },
+  right: { spriteSX: 7 * 48, spriteSY: 4 * 48 },
+};
+
+peopleSet1.male3 = {
+  frameWidth: 48,
+  frameHeight: 72,
+  up: { spriteSX: 10 * 48, spriteSY: 6 * 48 },
+  down: { spriteSX: 10 * 48, spriteSY: 0 },
+  left: { spriteSX: 10 * 48, spriteSY: 2 * 48 },
+  right: { spriteSX: 10 * 48, spriteSY: 4 * 48 },
+};
+
+peopleSet1.female1 = {
+  frameWidth: 48,
+  frameHeight: 72,
+  up: { spriteSX: 4 * 48, spriteSY: 6 * 48 },
+  down: { spriteSX: 4 * 48, spriteSY: 0 },
+  left: { spriteSX: 4 * 48, spriteSY: 2 * 48 },
+  right: { spriteSX: 4 * 48, spriteSY: 4 * 48 },
+};
+
 // const male3run = new ImgAsset("assets/male1-32x24.png", 32, 24, 0, 0);
 // male3run.register();
+
+/* YAY, trying out sounds too! */
+
+let screamMale = new Audio("assets/sounds/scream-pain-male.mp3");

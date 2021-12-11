@@ -74,6 +74,15 @@ function drawMap() {
   // How about some grass?
 
   for (let i = 0; i < canvas.width / 16; i++) {
+    //Top
+    simpleDraw(cityTileset, "grass", i * 16, 0, 1, 1);
+    simpleDraw(cityTileset, "grass", i * 16, 16, 1, 1);
+    simpleDraw(cityTileset, "grass", i * 16, 32, 1, 1);
+    simpleDraw(cityTileset, "grass", i * 16, 48, 1, 1);
+    simpleDraw(cityTileset, "grass", i * 16, 64, 1, 1);
+    simpleDraw(cityTileset, "grass", i * 16, 80, 1, 1);
+        
+    //Bottom
     simpleDraw(cityTileset, "grass", i * 16, canvas.height - 16, 1, 1);
     simpleDraw(cityTileset, "grass", i * 16, canvas.height - 32, 1, 1);
     simpleDraw(cityTileset, "grass", i * 16, canvas.height - 48, 1, 1);
@@ -101,10 +110,14 @@ function drawMap() {
   // Note to self: need to separate people from the obstacle drawing somehow to make them walk over crosswalks
 
   currentGame.obstacles.forEach((obst) => {
-    obst.drawObstacle();
+    if (!(obst instanceof Person)) {
+      obst.drawObstacle();
+    }  
   });
   currentGame.crosswalks.forEach((cw) => {
     cw.drawCrosswalk();
   });
-
+  currentGame.people.forEach((person) => {
+    person.drawObstacle();    
+  });
 }

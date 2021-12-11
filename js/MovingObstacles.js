@@ -56,6 +56,53 @@ class Car extends MovingObstacle {
   // constructor(...args){
   //   super();
   // }
+  
+  moveLeft() {
+    this.direction = "left";
+    if (this.x > 0) {
+      this.x -= this.dx;
+    }
+    currentGame.people.forEach(person => {
+      if (detectCollision(this, person)) {
+       person.rip();
+      }
+    });
+  }
+  moveRight() {
+    this.direction = "right";
+    if (this.x < canvas.width - this.width) {
+      this.x += this.dx;
+    }
+    currentGame.people.forEach(person => {
+      if (detectCollision(this, person)) {
+       person.rip();
+      }
+    });
+  }
+
+  moveUp() {
+    this.direction = "up";
+    if (this.y > 0) {
+      this.y -= this.dy;
+    }
+    currentGame.people.forEach(person => {
+      if (detectCollision(this, person)) {
+       person.rip();
+      }
+    });
+  }
+  moveDown() {
+    this.direction = "down";
+    if (this.y < canvas.height) {
+      this.y += this.dy;
+    }
+    currentGame.people.forEach(person => {
+      if (detectCollision(this, person)) {
+       person.rip();
+      }
+    });
+  }
+ 
   drawCar() {
     let spriteSX = 0;
     let spriteSY = 0;
@@ -148,6 +195,16 @@ class Person extends MovingObstacle {
     if (!currentGame.people.includes(this)) {
       currentGame.people.push(this);
     }
+  }
+
+  rip() {
+    let i = currentGame.people.indexOf(this);
+    currentGame.people.splice(i, 1);
+    let j = currentGame.objects.indexOf(this);
+    currentGame.objects.splice(j, 1);
+    let k = currentGame.obstacles.indexOf(this);
+    currentGame.obstacles.splice(k, 1);
+    screamMale.play();
   }
 
   moveUp() {
@@ -275,7 +332,6 @@ class Person extends MovingObstacle {
       case "male2":
         this.width = peopleSet1.male2.frameWidth * this.widthMultiplier;
         this.height = peopleSet1.male2.frameHeight * this.heightMultiplier;
-        this.moveRandom();
         switch (this.direction) {
           case "up":
             simpleDraw(
@@ -326,7 +382,6 @@ class Person extends MovingObstacle {
       case "male3":
         this.width = peopleSet1.male3.frameWidth * this.widthMultiplier;
         this.height = peopleSet1.male3.frameHeight * this.heightMultiplier;
-        this.moveRandom();
         switch (this.direction) {
           case "up":
             simpleDraw(
@@ -377,7 +432,6 @@ class Person extends MovingObstacle {
       case "female1":
         this.width = peopleSet1.female1.frameWidth * this.widthMultiplier;
         this.height = peopleSet1.female1.frameHeight * this.heightMultiplier;
-        this.moveRandom();
         switch (this.direction) {
           case "up":
             simpleDraw(

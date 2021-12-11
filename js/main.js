@@ -22,33 +22,33 @@ function startGame() {
   currentGame.obstacles.push(
     //Top
     new Person("male1", 40, 40, 0.7, 0.7, "down"),
-    new Person("male1", canvas.width - 40, 40, 0.7, 0.7, "down"),
-    new Person("male1", canvas.width - 40, 80, 0.7, 0.7, "down"),
+    new Person("female1", canvas.width - 40, 40, 0.7, 0.7, "down"),
+    new Person("male3", canvas.width - 40, 80, 0.7, 0.7, "down"),
     //Mid-Top
-    new Person("male1", 40, currentGame.goal.y + (160 * 2.20), 0.7, 0.7, "down"),
+    new Person("male2", 40, currentGame.goal.y + (160 * 2.20), 0.7, 0.7, "down"),
     new Person("male1", canvas.width - 40, currentGame.goal.y + (160 * 2.20), 0.7, 0.7, "down"),
-    new Person("male1", canvas.width - 500, currentGame.goal.y + (160 * 2.20), 0.7, 0.7, "down"),
+    new Person("female1", canvas.width - 500, currentGame.goal.y + (160 * 2.20), 0.7, 0.7, "down"),
     //Mid-Bottom
-    new Person("male1", 40, currentGame.goal.y + (160 * 4), 0.7, 0.7, "down"),
+    new Person("female1", 40, currentGame.goal.y + (160 * 4), 0.7, 0.7, "down"),
     new Person("male1", canvas.width - 40, currentGame.goal.y + (160 * 4), 0.7, 0.7, "down"),
-    new Person("male1", canvas.width - 500, currentGame.goal.y + (160 * 4), 0.7, 0.7, "down"),
+    new Person("male2", canvas.width - 500, currentGame.goal.y + (160 * 4), 0.7, 0.7, "down"),
     //Bottom
     //new Person("male1", 40, canvas.height - 64, 0.7, 0.7, "down"),
-    new Person("male1", canvas.width - 40, canvas.height - 64, 0.7, 0.7, "down"),
-    new Person("male1", canvas.width - 500, canvas.height - 64, 0.7, 0.7, "down")
+    new Person("male3", canvas.width - 40, canvas.height - 64, 0.7, 0.7, "down"),
+    new Person("male2", canvas.width - 500, canvas.height - 64, 0.7, 0.7, "down")
   );
 
   // And some static obstacles
 
   currentGame.obstacles.push(
     new Tree("bigTree", currentGame.goal.x - 64, currentGame.goal.y, 2, 2),
-    //new Tree("smallTree", 500, 500, 2, 2),
+    new Tree("smallTree", 0, canvas.height - 96, 2, 2),
     //new Tree("bigTree", 650, 700, 2, 2)
   );
 
   // Can't forget the roads
   createRoad(currentGame.goal.y + 160, 2);
-  createRoad(currentGame.goal.y + (160 * 2.60), 1);
+  createRoad(currentGame.goal.y + (160 * 2.60), 3);
   createRoad(currentGame.goal.y + (160 * 4.25), 2);
 
   //Get some cars going
@@ -56,7 +56,6 @@ function startGame() {
   createCar(250, currentGame.goal.y + 160, 64, 32, "blue");
   createCar(600, currentGame.goal.y + 160, 48, 32, "green");
   createCar(900, currentGame.goal.y + 160, 64, 32, "red");
-
 
   // Mid road
   createCar(125, currentGame.goal.y + (160 * 2.60), 64, 32, "blue");

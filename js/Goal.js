@@ -6,8 +6,8 @@ class Goal extends Obstacle {
     this.asset = null;
     this.x = x;
     this.y = y;
-    this.width = width;
-    this.height = height;
+    this.width = width * 2;
+    this.height = height * 2;
     this.goalType = goalType;
   }
 

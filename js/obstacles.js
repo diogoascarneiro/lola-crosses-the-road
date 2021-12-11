@@ -75,17 +75,25 @@ class Road extends Obstacle {
     super();
     this.x = x;
     this.y = y;
-    this.height = 128;
+    this.height = 112;
     this.width = width;
     this.heightMultiplier = heightMultiplier;
   }
 
   drawObstacle() {
-    for (let i = 0; i < this.width / (16 * this.heightMultiplier); i++) {
+    for (let i = 0; i < canvas.width / (16 * this.heightMultiplier); i++) {
+      simpleDraw(
+        cityTileset,
+        "pavement",
+        i * (16 * this.heightMultiplier),
+        this.y - (4 * this.heightMultiplier),
+        this.heightMultiplier,
+        this.heightMultiplier / 4
+      );
       simpleDraw(
         cityTileset,
         "roadTop",
-        this.x + (i * (16 * this.heightMultiplier)),
+        i * (16 * this.heightMultiplier),
         this.y,
         this.heightMultiplier,
         this.heightMultiplier
@@ -93,13 +101,22 @@ class Road extends Obstacle {
       simpleDraw(
         cityTileset,
         "roadBottom",
-        this.x + (i * (16 * this.heightMultiplier)),
+        i * (16 * this.heightMultiplier),
         this.y + (16 * this.heightMultiplier),
         this.heightMultiplier,
         this.heightMultiplier
       );
+      simpleDraw(
+        cityTileset,
+        "pavement",
+        i * (16 * this.heightMultiplier),
+        this.y + (32 * this.heightMultiplier),
+        this.heightMultiplier,
+        this.heightMultiplier / 4
+      );
     }
   }
+  
 }
 
 class Crosswalk {
@@ -130,8 +147,10 @@ class Crosswalk {
   }
 }
 
-/* Gotta give a little more space to pass on the crosswalks. 
- * Ideas: draw the same width but have the collision width be smaller*/
+/* This function doesn't actually draw separate roads - it just creates one spanning the canvas.
+*  Then it creates road objects which are slightly smaller than the road image itself, just to 
+*  make it easier for Lola to cross the road without colliding. She deserves it!
+*/
 
 function createRoad(y, numOfCrosswalks) {
 
@@ -149,8 +168,8 @@ function createRoad(y, numOfCrosswalks) {
     case 1:
     currentGame.crosswalks.push(new Crosswalk(cwLocationArr[0] - 64, y, 64, 4));
     currentGame.obstacles.push(
-      new Road(0, y, cwLocationArr[0] - 64, 4),
-      new Road(cwLocationArr[0], y, cwLocationArr[0] + 64, 4));
+      new Road(0, y, cwLocationArr[0] - 88, 4),
+      new Road(cwLocationArr[0] + 24, y, cwLocationArr[0] + 256, 4));
     break;
     case 2:
     currentGame.crosswalks.push(
@@ -158,9 +177,9 @@ function createRoad(y, numOfCrosswalks) {
       new Crosswalk(cwLocationArr[1][1] - 64, y, 64, 4)
       );
     currentGame.obstacles.push(
-      new Road(0, y, cwLocationArr[1][0] - 64, 4),
-      new Road(cwLocationArr[1][0], y, cwLocationArr[1][0] - 64, 4),
-      new Road(cwLocationArr[1][1], y, cwLocationArr[1][0] + 64, 4));
+      new Road(0, y, cwLocationArr[1][0] - 88, 4),
+      new Road(cwLocationArr[1][0] + 24, y, cwLocationArr[1][0] - 112, 4),
+      new Road(cwLocationArr[1][1] + 24, y, cwLocationArr[1][0] + 256, 4));
     break;
     case 3:
     currentGame.crosswalks.push(
@@ -168,10 +187,10 @@ function createRoad(y, numOfCrosswalks) {
       new Crosswalk(cwLocationArr[2][1] - 64, y, 64, 4),
       new Crosswalk(cwLocationArr[2][2] - 64, y, 64, 4));
     currentGame.obstacles.push(
-      new Road(0, y, cwLocationArr[2][0] - 64, 4),
-      new Road(cwLocationArr[2][0], y, cwLocationArr[2][0] - 64, 4),
-      new Road(cwLocationArr[2][1], y, cwLocationArr[2][0] - 64, 4),
-      new Road(cwLocationArr[2][2], y, cwLocationArr[2][0] + 64, 4));
+      new Road(0, y, cwLocationArr[2][0] - 88, 4),
+      new Road(cwLocationArr[2][0] + 24, y, cwLocationArr[2][0] - 112, 4),
+      new Road(cwLocationArr[2][1] + 24, y, cwLocationArr[2][0] - 112, 4),
+      new Road(cwLocationArr[2][2] + 24, y, cwLocationArr[2][0] + 256, 4));
     break;
   }
 }

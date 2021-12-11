@@ -105,6 +105,13 @@ cityTileset.crosswalk = {
   spriteSY: 2 * 16,
 };
 
+cityTileset.pavement = {
+  frameWidth: 16,
+  frameHeight: 16,
+  spriteSX: 22 * 16,
+  spriteSY: 2 * 16,
+}
+
 const cityTileset2 = new ImgAsset("assets/city-tileset2.png", 16, 16, 0, 0);
 cityTileset2.register();
 

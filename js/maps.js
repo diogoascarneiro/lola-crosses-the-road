@@ -71,75 +71,20 @@ function drawMap() {
     }
   }
 
-  // Draw the road - first the top, then bottom
-  for (let i = 0; i < canvas.width / 64; i++) {
-    ctx.drawImage(
-      cityTileset,
-      cityTileset.roadTop.spriteSX,
-      cityTileset.roadTop.spriteSY,
-      cityTileset.roadTop.frameWidth,
-      cityTileset.roadTop.frameHeight,
-      i * 64,
-      304,
-      cityTileset.roadTop.frameWidth * 4,
-      cityTileset.roadTop.frameHeight * 4
-    );
-  }
-
-  for (let i = 0; i < canvas.width / 64; i++) {
-    ctx.drawImage(
-      cityTileset,
-      cityTileset.roadBottom.spriteSX,
-      cityTileset.roadBottom.spriteSY,
-      cityTileset.roadBottom.frameWidth,
-      cityTileset.roadBottom.frameHeight,
-      i * 64,
-      368,
-      cityTileset.roadBottom.frameWidth * 4,
-      cityTileset.roadBottom.frameHeight * 4
-    );
-  }
-
-  // Gotta test those crosswalks too.
-
-  for (let i = 0; i < 2; i++) {
-    ctx.drawImage(
-      cityTileset,
-      cityTileset.crosswalk.spriteSX,
-      cityTileset.crosswalk.spriteSY,
-      cityTileset.crosswalk.frameWidth,
-      cityTileset.crosswalk.frameHeight,
-      256,
-      304 + i * 64,
-      cityTileset.crosswalk.frameWidth * 4,
-      cityTileset.crosswalk.frameHeight * 4
-    );
-  }
-
-  for (let i = 0; i < 2; i++) {
-    ctx.drawImage(
-      cityTileset,
-      cityTileset.crosswalk.spriteSX,
-      cityTileset.crosswalk.spriteSY,
-      cityTileset.crosswalk.frameWidth,
-      cityTileset.crosswalk.frameHeight,
-      256 * 4,
-      304 + i * 64,
-      cityTileset.crosswalk.frameWidth * 4,
-      cityTileset.crosswalk.frameHeight * 4
-    );
-  }
-
   // How about some grass?
 
   for (let i = 0; i < canvas.width / 16; i++) {
-    simpleDraw(cityTileset, "grass", i * 16, 256, 1, 1);
-    simpleDraw(cityTileset, "grass", i * 16, 272, 1, 1);
-    simpleDraw(cityTileset, "grass", i * 16, 288, 1, 1);
-  }
+    simpleDraw(cityTileset, "grass", i * 16, canvas.height - 16, 1, 1);
+    simpleDraw(cityTileset, "grass", i * 16, canvas.height - 32, 1, 1);
+    simpleDraw(cityTileset, "grass", i * 16, canvas.height - 48, 1, 1);
+    simpleDraw(cityTileset, "grass", i * 16, canvas.height - 64, 1, 1);
+    simpleDraw(cityTileset, "grass", i * 16, canvas.height - 80, 1, 1);
+    simpleDraw(cityTileset, "grass", i * 16, canvas.height - 96, 1, 1);
+    simpleDraw(cityTileset, "grass", i * 16, canvas.height - 112, 1, 1);
+ }
 
   // Let's draw a shop
-
+/*
   ctx.drawImage(
     cityTileset2,
     cityTileset2.shop.spriteSX,
@@ -150,9 +95,10 @@ function drawMap() {
     160,
     cityTileset2.shop.frameWidth * 2,
     cityTileset2.shop.frameHeight * 2
-  );
+  );*/
 
   // Let's make sure we draw all the static obstacles and crosswalks we created!
+  // Note to self: need to separate people from the obstacle drawing somehow to make them walk over crosswalks
 
   currentGame.obstacles.forEach((obst) => {
     obst.drawObstacle();
@@ -160,4 +106,5 @@ function drawMap() {
   currentGame.crosswalks.forEach((cw) => {
     cw.drawCrosswalk();
   });
+
 }

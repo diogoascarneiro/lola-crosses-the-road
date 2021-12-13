@@ -110,7 +110,7 @@ function drawMap() {
   // Note to self: need to separate people from the obstacle drawing somehow to make them walk over crosswalks
 
   currentGame.obstacles.forEach((obst) => {
-    if (!(obst instanceof Person)) {
+    if (!(obst instanceof Person) && !(obst instanceof Building)) {
       obst.drawObstacle();
     }  
   });

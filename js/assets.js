@@ -161,6 +161,72 @@ cityTileset2.house1 = {
   spriteSY: 9 * 16,
 };
 
+// BUILDINGS
+
+const buildingSet = new ImgAsset("assets/buildings.png", 32,32, 0, 0);
+buildingSet.register();
+
+buildingSet.tallRed = {
+  frameWidth: 48,
+  frameHeight: 96,
+  spriteSX: 0,
+  spriteSY: 0,
+}
+
+buildingSet.tallBlue = {
+  frameWidth: 48,
+  frameHeight: 96,
+  spriteSX: 48,
+  spriteSY: 0,
+}
+
+buildingSet.mall = {
+  frameWidth: 80,
+  frameHeight: 96,
+  spriteSX: 3 * 48,
+  spriteSY: 0,
+}
+
+buildingSet.tallOffice = {
+  frameWidth: 48,
+  frameHeight: 96,
+  spriteSX: 224,
+  spriteSY: 0,
+}
+
+buildingSet.wideStore = {
+  frameWidth: 64,
+  frameHeight: 48,
+  spriteSX: 0,
+  spriteSY: 96
+}
+
+buildingSet.tinyHouse = {
+  frameWidth: 32,
+  frameHeight: 48,
+  spriteSX: 160,
+  spriteSY: 96
+}
+
+buildingSet.pokeCenter = {
+  frameWidth: 64,
+  frameHeight: 64,
+  spriteSX: 0,
+  spriteSY: 144
+}
+
+buildingSet.groceryStore = {
+  frameWidth: 64,
+  frameHeight: 48,
+  spriteSX: 64,
+  spriteSY: 144
+}
+buildingSet.house2 = {
+  frameWidth: 48,
+  frameHeight: 48,
+  spriteSX: 128,
+  spriteSY: 144
+}
 // PEOPLE SPRITES
 
 const peopleSet1 = new ImgAsset("assets/people1.png", 48, 72, 0, 30);

@@ -17,10 +17,9 @@ function startGame() {
   currentGame.lola = selectedDog;
   currentGame.goal = goal;
   currentGame.objects.push(currentGame.lola, currentGame.goal);
-
+  // start level 1
   currentGame.level1();
-  /* Register obstacles, reset the animation frame, start the timer, start the game */
-  
+  /* reset the animation frame, start the timer, start the game */
   cancelAnimationFrame(currentGame.animationId);
   currentGame.timer.start(printTime);
   updateEverything();
@@ -73,46 +72,6 @@ function aWinnerIsYou() {
   printHiScores(hiScores);
 }
 
-function moveCars() {
-  currentGame.cars.forEach((car) => {
-   
-   if (car.direction === "right") { 
-     if (car.x < canvas.width) {
-     car.moveRight();
-     } else {
-     car.x = 0;
-   }
- }
-if (car.direction === "left") { 
-  if (car.x > 0) {
-  car.moveLeft();
-  } else {
-  car.x = canvas.width;
-}
-}
-    car.drawCar();
-    if (detectCollision(currentGame.lola, car)) {
-      currentGame.gameOver = true;
-    }
-  });
-
-  /* Isto abaixo gera um array cada vez maior. Pode ser fonte de problemas? - solução possivel - fazer um splice
-   carFrequency++;
-if (carFrequency % 200 === 1) {
-  createCar();
-} 
-*/
-}
-
-function movePeople() {
-  currentGame.peopleSpeed++;
-  if (currentGame.peopleSpeed % 50 === 1) {
-    currentGame.people.forEach((person) => {
-      person.moveRandom();
-    });
-  }
-}
-
 /* Here comes the main one */
 function updateEverything() {
   //Draw & move everything
@@ -122,6 +81,7 @@ function updateEverything() {
   currentGame.lola.drawDog();
   movePeople();
   moveCars();
+  drawBuildings();
   // CHECK FOR GAME OVERS AND GAME WINS
   if (!currentGame.gameOver && !currentGame.wonGame) {
     currentGame.animationID = requestAnimationFrame(updateEverything);

@@ -11,6 +11,7 @@ class Game {
     this.people = [];
     this.peopleSpeed = 0;
     this.crosswalks = [];
+    this.buildings = [];
   }
 
   level1() {
@@ -74,6 +75,14 @@ class Game {
   createCar(0, this.goal.y + (160 * 4.25 + 64), 64, 32, "blue", "right");
   createCar(1000, this.goal.y + (160 * 4.25 + 64), 48, 32, "green", "right");
   createCar(500, this.goal.y + (160 * 4.25 + 64), 64, 32, "red", "right");
+
+  // Add some buildings
+
+  this.obstacles.push(
+new Building("tallBlue", 0, canvas.height -460, 1.5, 1.5),
+new Building("tallRed", 80, canvas.height -460, 1.5, 1.5),
+new Building("tallBlue",160, canvas.height -460, 1.5, 1.5),
+  );
 
   //Register all obstacles
   this.obstacles.forEach((obst) => obst.register());

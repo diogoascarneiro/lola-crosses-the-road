@@ -22,8 +22,7 @@ class Obstacle {
   register() {
     if (!currentGame.objects.includes(this)) {
       currentGame.objects.push(this);
-      // currentGame.obstacles.push(this);
-    }
+      }
   }
 }
 
@@ -195,4 +194,39 @@ function createRoad(y, numOfCrosswalks) {
   }
 }
 
+// Time to make some buildings
 
+class Building extends Obstacle {
+  constructor(type, x, y, widthMultiplier, heightMultiplier) {
+    super();
+    this.x = x;
+    this.y = y;
+    this.type = type;
+    this.width = buildingSet[`${type}`].frameWidth * widthMultiplier;
+    this.height = buildingSet[`${type}`].frameHeight * heightMultiplier;
+    this.widthMultiplier = widthMultiplier;
+    this.heightMultiplier = heightMultiplier;
+  }
+    drawObstacle() {
+    switch (this.type) {
+      default: simpleDraw(buildingSet, this.type, this.x, this.y, this.widthMultiplier, this.heightMultiplier);
+    }
+  }
+
+  register() {
+    if (!currentGame.objects.includes(this)) {
+      currentGame.objects.push(this);
+      }
+      if (!currentGame.buildings.includes(this)) {
+        currentGame.buildings.push(this);
+        }
+  }
+}
+
+// Need to make a drawBuildings function so they overlap the cars and make them sneakier
+
+function drawBuildings() {
+  currentGame.buildings.forEach((building) => {
+    building.drawObstacle();    
+  });
+}

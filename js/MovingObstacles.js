@@ -104,50 +104,41 @@ class Car extends MovingObstacle {
   }
  
   drawCar() {
-    let spriteSX = 0;
-    let spriteSY = 0;
     switch (this.type) {
-      case "blue":
-        simpleDraw(
-          carSprites,
-          "blue",
-          this.x,
-          this.y,
-          1.5,
-          1.5,
-          this.direction
-        );
-        break;
-      case "green":
-        simpleDraw(
-          carSprites,
-          "green",
-          this.x,
-          this.y,
-          1.5,
-          1.5,
-          this.direction
-        );
-        break;
-      case "red":
-        simpleDraw(
-          carSprites,
-          "red",
-          this.x,
-          this.y,
-          1.5,
-          1.5,
-          this.direction
-        );
-        break;
+      default: simpleDraw(carSprites, this.type, this.x, this.y, 1.5, 1.5, this.direction);
     }
-  }
+   }
 }
 
 function createCar(x, y, width, height, color, direction) {
   let newCar = new Car(x, y, width, height, color, 1.5, 1.5, direction);
   currentGame.cars.push(newCar);
   currentGame.objects.push(newCar);
+}
+
+function moveCars() {
+  currentGame.cars.forEach((car) => {
+   
+   if (car.direction === "right") { 
+     if (car.x < canvas.width) {
+     car.moveRight();
+     } else {
+     car.x = 0;
+   }
+ }
+if (car.direction === "left") { 
+  if (car.x > 0) {
+  car.moveLeft();
+  } else {
+  car.x = canvas.width;
+}
+}
+    car.drawCar();
+    if (detectCollision(currentGame.lola, car)) {
+      currentGame.gameOver = true;
+    }
+  });
+
 }
 
 /* PERSON CLASS */
@@ -256,205 +247,32 @@ class Person extends MovingObstacle {
       case "male1":
         this.width = peopleSet1.male1.frameWidth * this.widthMultiplier;
         this.height = peopleSet1.male1.frameHeight * this.heightMultiplier;
-        // this.moveRandom();
-        switch (this.direction) {
-          // experimentar com case (this.direction)
-          case "up":
-            simpleDraw(
-              peopleSet1,
-              "male1",
-              this.x,
-              this.y,
-              this.widthMultiplier,
-              this.heightMultiplier,
-              "up"
-            );
-            break;
-          case "down":
-            simpleDraw(
-              peopleSet1,
-              "male1",
-              this.x,
-              this.y,
-              this.widthMultiplier,
-              this.heightMultiplier,
-              "down"
-            );
-            break;
-          case "left":
-            simpleDraw(
-              peopleSet1,
-              "male1",
-              this.x,
-              this.y,
-              this.widthMultiplier,
-              this.heightMultiplier,
-              "left"
-            );
-            break;
-          case "right":
-            simpleDraw(
-              peopleSet1,
-              "male1",
-              this.x,
-              this.y,
-              this.widthMultiplier,
-              this.heightMultiplier,
-              "right"
-            );
-            break;
-        }
+        simpleDraw(peopleSet1, this.type, this.x, this.y, this.widthMultiplier, this.heightMultiplier, this.direction);
         break;
       case "male2":
         this.width = peopleSet1.male2.frameWidth * this.widthMultiplier;
         this.height = peopleSet1.male2.frameHeight * this.heightMultiplier;
-        switch (this.direction) {
-          case "up":
-            simpleDraw(
-              peopleSet1,
-              "male2",
-              this.x,
-              this.y,
-              this.widthMultiplier,
-              this.heightMultiplier,
-              "up"
-            );
-            break;
-          case "down":
-            simpleDraw(
-              peopleSet1,
-              "male2",
-              this.x,
-              this.y,
-              this.widthMultiplier,
-              this.heightMultiplier,
-              "down"
-            );
-            break;
-          case "left":
-            simpleDraw(
-              peopleSet1,
-              "male2",
-              this.x,
-              this.y,
-              this.widthMultiplier,
-              this.heightMultiplier,
-              "left"
-            );
-            break;
-          case "right":
-            simpleDraw(
-              peopleSet1,
-              "male2",
-              this.x,
-              this.y,
-              this.widthMultiplier,
-              this.heightMultiplier,
-              "right"
-            );
-            break;
-        }
+        simpleDraw(peopleSet1, this.type, this.x, this.y, this.widthMultiplier, this.heightMultiplier, this.direction);
         break;
       case "male3":
         this.width = peopleSet1.male3.frameWidth * this.widthMultiplier;
         this.height = peopleSet1.male3.frameHeight * this.heightMultiplier;
-        switch (this.direction) {
-          case "up":
-            simpleDraw(
-              peopleSet1,
-              "male3",
-              this.x,
-              this.y,
-              this.widthMultiplier,
-              this.heightMultiplier,
-              "up"
-            );
-            break;
-          case "down":
-            simpleDraw(
-              peopleSet1,
-              "male3",
-              this.x,
-              this.y,
-              this.widthMultiplier,
-              this.heightMultiplier,
-              "down"
-            );
-            break;
-          case "left":
-            simpleDraw(
-              peopleSet1,
-              "male3",
-              this.x,
-              this.y,
-              this.widthMultiplier,
-              this.heightMultiplier,
-              "left"
-            );
-            break;
-          case "right":
-            simpleDraw(
-              peopleSet1,
-              "male3",
-              this.x,
-              this.y,
-              this.widthMultiplier,
-              this.heightMultiplier,
-              "right"
-            );
-            break;
-        }
+        simpleDraw(peopleSet1, this.type, this.x, this.y, this.widthMultiplier, this.heightMultiplier, this.direction);
         break;
       case "female1":
         this.width = peopleSet1.female1.frameWidth * this.widthMultiplier;
         this.height = peopleSet1.female1.frameHeight * this.heightMultiplier;
-        switch (this.direction) {
-          case "up":
-            simpleDraw(
-              peopleSet1,
-              "female1",
-              this.x,
-              this.y,
-              this.widthMultiplier,
-              this.heightMultiplier,
-              "up"
-            );
-            break;
-          case "down":
-            simpleDraw(
-              peopleSet1,
-              "female1",
-              this.x,
-              this.y,
-              this.widthMultiplier,
-              this.heightMultiplier,
-              "down"
-            );
-            break;
-          case "left":
-            simpleDraw(
-              peopleSet1,
-              "female1",
-              this.x,
-              this.y,
-              this.widthMultiplier,
-              this.heightMultiplier,
-              "left"
-            );
-            break;
-          case "right":
-            simpleDraw(
-              peopleSet1,
-              "female1",
-              this.x,
-              this.y,
-              this.widthMultiplier,
-              this.heightMultiplier,
-              "right"
-            );
-            break;
-        }
+        simpleDraw(peopleSet1, this.type, this.x, this.y, this.widthMultiplier, this.heightMultiplier, this.direction);
         break;
     }
+  }
+}
+
+function movePeople() {
+  currentGame.peopleSpeed++;
+  if (currentGame.peopleSpeed % 50 === 1) {
+    currentGame.people.forEach((person) => {
+      person.moveRandom();
+    });
   }
 }

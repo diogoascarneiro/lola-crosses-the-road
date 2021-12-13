@@ -70,7 +70,7 @@ class Car extends MovingObstacle {
   }
   moveRight() {
     this.direction = "right";
-    if (this.x < canvas.width - this.width) {
+    if (this.x < canvas.width) {
       this.x += this.dx;
     }
     currentGame.people.forEach(person => {
@@ -108,60 +108,36 @@ class Car extends MovingObstacle {
     let spriteSY = 0;
     switch (this.type) {
       case "blue":
-        cityTileset.frameWidth = this.width;
-        cityTileset.frameHeight = this.height;
-        cityTileset.column = 4.5;
-        cityTileset.row = 8;
-        spriteSX = cityTileset.column * cityTileset.frameWidth;
-        spriteSY = cityTileset.row * cityTileset.frameHeight;
-        ctx.drawImage(
-          cityTileset,
-          spriteSX,
-          spriteSY,
-          cityTileset.frameWidth,
-          cityTileset.frameHeight,
+        simpleDraw(
+          carSprites,
+          "blue",
           this.x,
           this.y,
-          cityTileset.frameWidth * 1.5,
-          cityTileset.frameHeight * 1.5
+          1.5,
+          1.5,
+          this.direction
         );
         break;
       case "green":
-        cityTileset.frameWidth = this.width;
-        cityTileset.frameHeight = this.height;
-        cityTileset.column = 5;
-        cityTileset.row = 8;
-        spriteSX = cityTileset.column * cityTileset.frameWidth;
-        spriteSY = cityTileset.row * cityTileset.frameHeight;
-        ctx.drawImage(
-          cityTileset,
-          spriteSX,
-          spriteSY,
-          cityTileset.frameWidth,
-          cityTileset.frameHeight,
+        simpleDraw(
+          carSprites,
+          "green",
           this.x,
           this.y,
-          cityTileset.frameWidth * 1.5,
-          cityTileset.frameHeight * 1.5
+          1.5,
+          1.5,
+          this.direction
         );
         break;
       case "red":
-        cityTileset.frameWidth = this.width;
-        cityTileset.frameHeight = this.height;
-        cityTileset.column = 2.8;
-        cityTileset.row = 8;
-        spriteSX = cityTileset.column * cityTileset.frameWidth;
-        spriteSY = cityTileset.row * cityTileset.frameHeight;
-        ctx.drawImage(
-          cityTileset,
-          spriteSX,
-          spriteSY,
-          cityTileset.frameWidth,
-          cityTileset.frameHeight,
+        simpleDraw(
+          carSprites,
+          "red",
           this.x,
           this.y,
-          cityTileset.frameWidth * 1.5,
-          cityTileset.frameHeight * 1.5
+          1.5,
+          1.5,
+          this.direction
         );
         break;
     }
@@ -169,7 +145,7 @@ class Car extends MovingObstacle {
 }
 
 function createCar(x, y, width, height, color, direction) {
-  let newCar = new Car(x, y, width, height, color, direction);
+  let newCar = new Car(x, y, width, height, color, 1.5, 1.5, direction);
   currentGame.cars.push(newCar);
   currentGame.objects.push(newCar);
 }

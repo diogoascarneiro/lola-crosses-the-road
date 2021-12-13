@@ -51,6 +51,38 @@ let lolaSpriteRight = new ImgAsset(
 lolaSpriteRight.register();
 lolaSpriteRight.column = 13.7;
 
+/* Car Sprites */
+
+const carSprites = new ImgAsset("assets/cars.png", 16, 16, 0, 0);
+carSprites.register();
+
+carSprites.red = {
+  frameWidth: 48,
+  frameHeight: 32,
+  up: { spriteSX: 0, spriteSY: 2 * 32 },
+  down: { spriteSX: 0, spriteSY: 3 * 32 },
+  left: { spriteSX: 0, spriteSY: 1 * 32 },
+  right: { spriteSX: 0, spriteSY: 0 },
+}
+
+carSprites.green = {
+  frameWidth: 48,
+  frameHeight: 32,
+  up: { spriteSX: 1 * 48, spriteSY: 2 * 32 },
+  down: { spriteSX: 1 * 48, spriteSY: 3 * 32 },
+  left: { spriteSX: 1 * 48, spriteSY: 1 * 32 },
+  right: { spriteSX: 1 * 48, spriteSY: 0 },
+}
+
+carSprites.blue = {
+  frameWidth: 48,
+  frameHeight: 32,
+  up: { spriteSX: 2 * 48, spriteSY: 2 * 32 },
+  down: { spriteSX: 2 * 48, spriteSY: 3 * 32 },
+  left: { spriteSX: 2 * 48, spriteSY: 1 * 32 },
+  right: { spriteSX: 2 * 48, spriteSY: 0 },
+}
+
 /* CITY TILESETS 1 & 2 */
 
 const cityTileset = new ImgAsset("assets/city-tileset.png", 16, 16, 0, 0);

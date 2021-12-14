@@ -7,6 +7,8 @@ let inGameStart = true;
 let startStep = 0;
 let inGameOver = false;
 let gameOverStep = 0;
+let inGameWin = false;
+let gameWinStep = 0;
 let readyToPlay = false;
 let hiScores = [];
 
@@ -63,10 +65,8 @@ function gameOver() {
 
 function aWinnerIsYou() {
   readyToPlay = true;
-  ctx.fillStyle = "black";
-  ctx.font = "20px Visitor";
-  ctx.fillText("YA DID IT LOLA, YA CROSSED THE ROAD", 50, 200);
-  ctx.fillText("PRESS ENTER TO PLAY AGAIN", 50, 400);
+  inGameWin = true;
+  ctx.drawImage(gameWinScreen1, 0, 0);
   currentGame.timer.stop();
   hiScores.push(currentGame.timer.split());
   clearHiScores();
@@ -117,7 +117,15 @@ document.addEventListener("keydown", (keyboardEvent) => {
       startGame();
     }
   }
-  
+  if (inGameWin) {
+    if (gameWinStep === 0 && keyboardEvent.key === "Enter") {ctx.drawImage(gameWinScreen2, 0, 0); gameWinStep = 1;}
+    else if (gameWinStep === 1 && readyToPlay === true && keyboardEvent.key === "Enter") {
+      readyToPlay = false;
+      gameWinStep = 0;
+      inGameWin = false;
+      startGame();
+    }
+  }
   
 
   currentGame.lola.move(keyboardEvent.key);

@@ -38,6 +38,10 @@ let gameOverScreen1 = new ImgAsset("assets/gameover1.png");
 gameOverScreen1.register();
 let gameOverScreen2 = new ImgAsset("assets/gameover2.png");
 gameOverScreen2.register();
+let gameWinScreen1 = new ImgAsset("assets/gamewin1.png");
+gameOverScreen1.register();
+let gameWinScreen2 = new ImgAsset("assets/gamewin2.png");
+gameOverScreen2.register();
 
 /* LOLA'S SPRITE <3
  * Need to figure out a way to make the frames jump evenly by changing row and column!

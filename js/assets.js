@@ -123,12 +123,54 @@ cityTileset.bigTree = {
   spriteSY: 11 * 16,
 };
 
+cityTileset.statue = {
+  frameWidth: 16,
+  frameHeight: 16,
+  spriteSX: 8 * 16,
+  spriteSY: 8 * 16,
+};
+
 cityTileset.grass = {
   frameWidth: 16,
   frameHeight: 16,
   spriteSX: 8 * 16,
   spriteSY: 9 * 16,
 };
+
+cityTileset.sand = {
+  frameWidth: 16,
+  frameHeight: 16,
+  spriteSX: 8 * 16,
+  spriteSY: 10 * 16,
+};
+
+cityTileset.bush = {
+  frameWidth: 16,
+  frameHeight: 16,
+  spriteSX: 10 * 16,
+  spriteSY: 9 * 16,
+};
+
+cityTileset.flowers = {
+  frameWidth: 16,
+  frameHeight: 16,
+  spriteSX: 10 * 16,
+  spriteSY: 10 * 16,
+};
+
+cityTileset.bench = {
+  frameWidth: 32,
+  frameHeight: 16,
+  spriteSX: 21 * 16,
+  spriteSY: 5 * 16,
+}
+
+cityTileset.trashBin = {
+  frameWidth: 16,
+  frameHeight: 16,
+  spriteSX: 20 * 16,
+  spriteSY: 6 * 16,
+}
 
 cityTileset.crosswalk = {
   frameWidth: 16,
@@ -181,9 +223,9 @@ buildingSet.tallBlue = {
 }
 
 buildingSet.mall = {
-  frameWidth: 80,
+  frameWidth: 79,
   frameHeight: 96,
-  spriteSX: 3 * 48,
+  spriteSX: 3 * 48 + 1,
   spriteSY: 0,
 }
 

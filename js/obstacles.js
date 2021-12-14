@@ -26,43 +26,22 @@ class Obstacle {
   }
 }
 
-class Tree extends Obstacle {
+class DecorObst extends Obstacle {
   constructor(type, x, y, widthMultiplier, heightMultiplier) {
     super();
     this.x = x;
     this.y = y;
     this.type = type;
-    this.width = null;
-    this.height = null;
+    this.width = cityTileset[`${type}`].frameWidth * widthMultiplier;
+    this.height = cityTileset[`${type}`].frameHeight * heightMultiplier;
     this.widthMultiplier = widthMultiplier;
     this.heightMultiplier = heightMultiplier;
   }
 
   drawObstacle() {
     switch (this.type) {
-      case "smallTree":
-        this.width = cityTileset.smallTree.frameWidth;
-        this.height = cityTileset.smallTree.frameHeight;
-        simpleDraw(
-          cityTileset,
-          "smallTree",
-          this.x,
-          this.y,
-          this.widthMultiplier,
-          this.heightMultiplier
-        );
-        break;
-      case "bigTree":
-        this.width = cityTileset.bigTree.frameWidth * this.widthMultiplier;
-        this.height = cityTileset.bigTree.frameHeight * this.heightMultiplier;
-        simpleDraw(
-          cityTileset,
-          "bigTree",
-          this.x,
-          this.y,
-          this.widthMultiplier,
-          this.heightMultiplier
-        );
+       case this.type:
+        simpleDraw(cityTileset, this.type, this.x, this.y, this.widthMultiplier, this.heightMultiplier)
         break;
     }
   }

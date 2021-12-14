@@ -6,23 +6,13 @@ class Goal extends Obstacle {
     this.asset = null;
     this.x = x;
     this.y = y;
-    this.width = width * 2;
-    this.height = height * 2;
+    this.width = width * 1.5;
+    this.height = height * 1.5;
     this.goalType = goalType;
   }
 
   drawGoal() {
-    ctx.drawImage(
-      cityTileset2,
-      cityTileset2.house1.spriteSX,
-      cityTileset2.house1.spriteSY,
-      cityTileset2.house1.frameWidth,
-      cityTileset2.house1.frameHeight,
-      this.x,
-      this.y,
-      cityTileset2.house1.frameWidth * 2,
-      cityTileset2.house1.frameHeight * 2
-    );
+    simpleDraw(cityTileset2, "house1", this.x, this.y, 1.5, 1.5)
   }
 
   checkIfWon() {

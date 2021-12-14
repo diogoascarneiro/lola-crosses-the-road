@@ -3,6 +3,10 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 let currentGame;
+let inGameStart = true;
+let startStep = 0;
+let inGameOver = false;
+let gameOverStep = 0;
 let readyToPlay = false;
 let hiScores = [];
 
@@ -38,10 +42,8 @@ window.addEventListener("load", (event) => {
   } else {
     readyToPlay = true;
     clearCanvas();
-    ctx.fillStyle = "black";
-    ctx.font = "20px Georgia";
-    ctx.fillText("PRESS ENTER TO START", 50, 200);
-  }
+    ctx.drawImage(startScreen1, 0, 0);
+    }
 });
 
 /* Main Canvas functions here */
@@ -52,10 +54,9 @@ function clearCanvas() {
 
 function gameOver() {
   readyToPlay = true;
-  ctx.fillStyle = "black";
-  ctx.font = "20px Visitor";
-  ctx.fillText("Oh noes! Game Over!", 50, 200);
-  ctx.fillText("PRESS ENTER TO PLAY AGAIN", 50, 400);
+  ctx.drawImage(gameOverScreen1, 0, 0);
+  inGameOver = true;
+  gameOverStep = 0;
   currentGame.timer.stop();
   currentGame.timer.reset();
 }
@@ -98,9 +99,26 @@ function updateEverything() {
 }
 
 document.addEventListener("keydown", (keyboardEvent) => {
-  if (readyToPlay === true && keyboardEvent.key === "Enter") {
-    readyToPlay === false;
-    startGame();
+  if (inGameStart) {
+    if (startStep === 0 && keyboardEvent.key === "Enter") {ctx.drawImage(startScreen2, 0, 0); startStep = 1;}
+    else if (startStep === 1 && readyToPlay === true && keyboardEvent.key === "Enter") {
+      readyToPlay = false;
+      startStep = 0;
+      inGameStart = false;
+      startGame();
+    }
   }
+  if (inGameOver) {
+    if (gameOverStep === 0 && keyboardEvent.key === "Enter") {ctx.drawImage(gameOverScreen2, 0, 0); gameOverStep = 1;}
+    else if (gameOverStep === 1 && readyToPlay === true && keyboardEvent.key === "Enter") {
+      readyToPlay = false;
+      gameOverStep = 0;
+      inGameOver = false;
+      startGame();
+    }
+  }
+  
+  
+
   currentGame.lola.move(keyboardEvent.key);
 });

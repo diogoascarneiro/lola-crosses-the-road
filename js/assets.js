@@ -29,6 +29,16 @@ function checkAssetsLoaded() {
 /* Declaring assets here. Could have done it with a loop from an array but I wanted to have an identifier
  *  to refer to in the code elsewhere, e.g. "lolaSprite" for Lola's sprite */
 
+// Start screen, game win and game over images
+let startScreen1 = new ImgAsset("assets/startscreen.png");
+startScreen1.register();
+let startScreen2 = new ImgAsset("assets/startscreen2.png");
+startScreen2.register();
+let gameOverScreen1 = new ImgAsset("assets/gameover1.png");
+gameOverScreen1.register();
+let gameOverScreen2 = new ImgAsset("assets/gameover2.png");
+gameOverScreen2.register();
+
 /* LOLA'S SPRITE <3
  * Need to figure out a way to make the frames jump evenly by changing row and column!
  */

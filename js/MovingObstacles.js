@@ -14,8 +14,8 @@ class MovingObstacle extends Obstacle {
     super();
     this.x = x;
     this.y = y;
-    this.dx = 4;
-    this.dy = 4;
+    this.dx = 3;
+    this.dy = 3;
     this.width = width;
     this.height = height;
     this.type = type;

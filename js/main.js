@@ -9,6 +9,7 @@ let inGameOver = false;
 let gameOverStep = 0;
 let inGameWin = false;
 let gameWinStep = 0;
+let inGame = false;
 let readyToPlay = false;
 let hiScores = [];
 
@@ -19,6 +20,7 @@ function startGame() {
   let selectedDog = new Dog(64, canvas.height - 64, 55, 35);
   let goal = new Goal(canvas.width / 2 - 64, 0, 64, 48);
   let timer = new Chronometer();
+  inGame = true;
   currentGame.timer = timer;
   currentGame.lola = selectedDog;
   currentGame.goal = goal;
@@ -57,8 +59,10 @@ function clearCanvas() {
 function gameOver() {
   readyToPlay = true;
   ctx.drawImage(gameOverScreen1, 0, 0);
+  awoo.play();
   inGameOver = true;
   gameOverStep = 0;
+  themeMusic.pause();
   currentGame.timer.stop();
   currentGame.timer.reset();
 }
@@ -126,7 +130,5 @@ document.addEventListener("keydown", (keyboardEvent) => {
       startGame();
     }
   }
-  
-
-  currentGame.lola.move(keyboardEvent.key);
+  if (inGame) {currentGame.lola.move(keyboardEvent.key);}
 });

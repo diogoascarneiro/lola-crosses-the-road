@@ -11,9 +11,12 @@ body {
   border: 6px solid black;
 }
 
-.col-2 {
-  background-color: black;
-  color:white;}
+.col-4 {
+  background-color:#daefff;
+  color:black;
+  padding: 5%;
+  border-top: 6px solid black;
+  border-bottom: 6px solid black}
 
 
 /* Chronometer styles */

@@ -22,6 +22,7 @@ function startGame() {
   /* reset the animation frame, start the timer, start the game */
   cancelAnimationFrame(currentGame.animationId);
   currentGame.timer.start(printTime);
+  themeMusic.play();
   updateEverything();
 }
 

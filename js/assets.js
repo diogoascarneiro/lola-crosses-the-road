@@ -316,3 +316,5 @@ peopleSet1.female1 = {
 /* YAY, trying out sounds too! */
 
 let screamMale = new Audio("assets/sounds/scream-pain-male.mp3");
+let themeMusic = new Audio("assets/sounds/theme.mp3");
+themeMusic.loop = true;

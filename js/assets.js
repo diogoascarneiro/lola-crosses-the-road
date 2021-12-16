@@ -30,17 +30,17 @@ function checkAssetsLoaded() {
  *  to refer to in the code elsewhere, e.g. "lolaSprite" for Lola's sprite */
 
 // Start screen, game win and game over images
-let startScreen1 = new ImgAsset("assets/startscreen.png");
+let startScreen1 = new ImgAsset("./assets/startscreen.png");
 startScreen1.register();
-let startScreen2 = new ImgAsset("assets/startscreen2.png");
+let startScreen2 = new ImgAsset("./assets/startscreen2.png");
 startScreen2.register();
-let gameOverScreen1 = new ImgAsset("assets/gameover1.png");
+let gameOverScreen1 = new ImgAsset("./assets/gameover1.png");
 gameOverScreen1.register();
-let gameOverScreen2 = new ImgAsset("assets/gameover2.png");
+let gameOverScreen2 = new ImgAsset("./assets/gameover2.png");
 gameOverScreen2.register();
-let gameWinScreen1 = new ImgAsset("assets/gamewin1.png");
+let gameWinScreen1 = new ImgAsset("./assets/gamewin1.png");
 gameOverScreen1.register();
-let gameWinScreen2 = new ImgAsset("assets/gamewin2.png");
+let gameWinScreen2 = new ImgAsset("./assets/gamewin2.png");
 gameOverScreen2.register();
 
 /* LOLA'S SPRITE <3
@@ -67,7 +67,7 @@ lolaSpriteRight.column = 13.7;
 
 /* Car Sprites */
 
-const carSprites = new ImgAsset("assets/cars.png", 16, 16, 0, 0);
+const carSprites = new ImgAsset("./assets/cars.png", 16, 16, 0, 0);
 carSprites.register();
 
 carSprites.red = {
@@ -99,7 +99,7 @@ carSprites.blue = {
 
 /* CITY TILESETS 1 & 2 */
 
-const cityTileset = new ImgAsset("assets/city-tileset.png", 16, 16, 0, 0);
+const cityTileset = new ImgAsset("./assets/city-tileset.png", 16, 16, 0, 0);
 cityTileset.register();
 
 cityTileset.sidewalk = {
@@ -200,7 +200,7 @@ cityTileset.pavement = {
   spriteSY: 2 * 16,
 }
 
-const cityTileset2 = new ImgAsset("assets/city-tileset2.png", 16, 16, 0, 0);
+const cityTileset2 = new ImgAsset("./assets/city-tileset2.png", 16, 16, 0, 0);
 cityTileset2.register();
 
 cityTileset2.shop = {
@@ -219,7 +219,7 @@ cityTileset2.house1 = {
 
 // BUILDINGS
 
-const buildingSet = new ImgAsset("assets/buildings.png", 32,32, 0, 0);
+const buildingSet = new ImgAsset("./assets/buildings.png", 32,32, 0, 0);
 buildingSet.register();
 
 buildingSet.tallRed = {
@@ -285,7 +285,7 @@ buildingSet.house2 = {
 }
 // PEOPLE SPRITES
 
-const peopleSet1 = new ImgAsset("assets/people1.png", 48, 72, 0, 30);
+const peopleSet1 = new ImgAsset("./assets/people1.png", 48, 72, 0, 30);
 peopleSet1.register();
 
 peopleSet1.male1 = {
@@ -324,12 +324,12 @@ peopleSet1.female1 = {
   right: { spriteSX: 4 * 48, spriteSY: 4 * 48 },
 };
 
-// const male3run = new ImgAsset("assets/male1-32x24.png", 32, 24, 0, 0);
+// const male3run = new ImgAsset("./assets/male1-32x24.png", 32, 24, 0, 0);
 // male3run.register();
 
 /* YAY, trying out sounds too! */
 
-let screamMale = new Audio("assets/sounds/scream-pain-male.mp3");
-let themeMusic = new Audio("assets/sounds/theme.mp3");
+let screamMale = new Audio("./assets/sounds/scream-pain-male.mp3");
+let themeMusic = new Audio("./assets/sounds/theme.mp3");
 themeMusic.loop = true;
-let awoo = new Audio("assets/sounds/awoo.mp3");
+let awoo = new Audio("./assets/sounds/awoo.mp3");

@@ -1,10 +1,3 @@
-/*
- * Preciso de pensar aqui um bocado nos diferentes tipos de obstaculo. Estrada, pessoas (boas e más)?
- *
- *
- *
- */
-
 /* MAIN OBSTACLE CLASS */
 class Obstacle {
   constructor(x, y, width, height, type, widthMultiplier, heightMultiplier) {

@@ -4,8 +4,8 @@ class Dog {
     this.y = y;
     this.dx = 8;
     this.dy = 8;
-    this.width = width;
-    this.height = height;
+    this.width = width - 5;
+    this.height = height - 5;
     this.direction = "right";
   }
 

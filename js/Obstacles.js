@@ -120,7 +120,7 @@ class Crosswalk {
 
 /* This function doesn't actually draw separate roads - it just creates one spanning the canvas.
 *  Then it creates road objects which are slightly smaller than the road image itself, just to 
-*  make it easier for Lola to cross the road without colliding. She deserves it!
+*  make it easier for Lola to cross the road without colliding. She deserves it! <3
 */
 
 function createRoad(y, numOfCrosswalks) {

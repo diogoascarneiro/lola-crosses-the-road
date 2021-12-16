@@ -2,6 +2,19 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
+// I made the canvas too big (insert the price is right losing sound here)
+// so now I have to check for different screen sizes and zoom out accordingly
+
+function adjustZoom() {
+let screenHeight = window.screen.height;
+
+switch (screenHeight) {
+  case 1080: document.body.style.zoom = 1; break;
+  case 720: document.body.style.zoom = 0.63; break;
+}
+}
+// document.body.style.zoom = 0.5;
+
 let currentGame;
 let inGameStart = true;
 let startStep = 0;
@@ -35,8 +48,9 @@ function startGame() {
 }
 
 window.addEventListener("load", (event) => {
-  // First check if all assets are loaded
+  // First adjust the zoom, then check if all assets are loaded
   // If they are, ask player to press enter to start, then proceed to the game loop
+  adjustZoom();
   if (!checkAssetsLoaded()) {
     clearCanvas();
     ctx.fillStyle = "black";

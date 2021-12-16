@@ -11,6 +11,8 @@ body {
   /* border: 7px solid black; */
 }
 
+
+
 h1 {
   font-size: 3.5rem;
 }
@@ -26,8 +28,8 @@ li {
 .col-4 {
   color:black;
   padding: 1% 4%;
-  border-left:6px solid black;
-  height:100vh;
+  /* border-left:6px solid black; */
+  /* height:100vh; */
   text-align:center
   }
 

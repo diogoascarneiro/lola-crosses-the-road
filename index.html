@@ -13,37 +13,42 @@
 
 <body>
   <section class="container-fluid g-0">
-    <div class="row g-0">
-      <div class="col-8">
+    <div class="row g-0 align-items-center">
+      <div class="col-8 d-flex justify-content-center">
         <canvas id="canvas" height="928px" width="1280px"></canvas>
       </div>
-      <div class="col-4 align-items-center justify-content-center">
+      <div class="col-4">
         <h1>LOLA CROSSES THE ROAD</h1>
         <h2>HOW TO PLAY</h2>
         <ul>
           <li>Your goal is to get Lola back to her house on the other side of the map as fast as possible!
-            <img src="assets/lola-house.png" alt="" srcset=""></li>
+            <img src="./assets/lola-house.png" alt="" srcset="">
+          </li>
           <li>Press the arrow keys to move.</li>
           <li>Lola can only cross the road on crosswalks.</li>
           <li>Watch out for cars! It's a game over if Lola is hit by one.</li>
           <li>People will block your way and push you back, so try to avoid them.</li>
         </ul>
-        <h3>CURRENT TIME:</h3>
-        <section id="clock">
-          <div id="sphere">
-            <span id="minDec" class="number">0</span>
-            <span id="minUni" class="number">0</span>
-            <span>:</span>
-            <span id="secDec" class="number">0</span>
-            <span id="secUni" class="number">0</span>
-            <div id="milliseconds">
-              <span id="milDec">0</span>
-              <span id="milUni">0</span>
+        <div class="score-container row">
+          <div class="time col-6">
+            <h3>CURRENT TIME:</h3>
+                          <div id="sphere">
+                <span id="minDec" class="number">0</span>
+                <span id="minUni" class="number">0</span>
+                <span>:</span>
+                <span id="secDec" class="number">0</span>
+                <span id="secUni" class="number">0</span>
+                <div id="milliseconds">
+                  <span id="milDec">0</span>
+                  <span id="milUni">0</span>
+                </div>
+              </div>
             </div>
+          <div class="hi-scores col-6">
+            <h3>HIGH SCORES:</h3>
+            <ol id="splits"></ol>
           </div>
-        </section>
-        <h5>HIGH SCORES:</h5>
-        <ol id="splits"></ol>
+        </div>
       </div>
     </div>
 

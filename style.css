@@ -8,7 +8,7 @@ body {
   background-color:#daefff;
 }
 #canvas {
-  border: 7px solid black;
+  /* border: 7px solid black; */
 }
 
 h1 {
@@ -26,31 +26,22 @@ li {
 .col-4 {
   color:black;
   padding: 1% 4%;
+  border-left:6px solid black;
   height:100vh;
-  border-top: 6px solid black;
-  border-bottom: 6px solid black;
-  border-right: 6px solid black;
   text-align:center
   }
 
 
 /* Chronometer styles */
 
-#clock {
-  border: 2px solid #000;
-  border-radius: 20px;
-  box-sizing: border-box;
-  height: 250px;
-  padding: 18px 0;
-  width: 245px;
-}
+
 
 #sphere {
-  border: 2px solid #000;
+  border: 10px solid #000;
   border-radius: 20px;
   box-sizing: border-box;
-  font-size: 80px;
-  height: 210px;
+  font-size: 70px;
+  height: auto;
   margin: 0 auto;
   padding: 35px 0;
   position: relative;

@@ -8,13 +8,12 @@ const ctx = canvas.getContext("2d");
 function adjustZoom() {
 let screenHeight = window.screen.height;
 
-switch (screenHeight) {
-  case 1080: document.body.style.zoom = 1; break;
-  case 720: document.body.style.zoom = 0.63; break;
+if (screenHeight >= 1080) {
+  document.body.style.zoom = 1;
+} else if ((screenHeight >= 720) && (screenHeight < 1080)) {
+  document.body.style.zoom = 0.63;
 }
 }
-// document.body.style.zoom = 0.5;
-
 let currentGame;
 let inGameStart = true;
 let startStep = 0;

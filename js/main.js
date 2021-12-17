@@ -14,6 +14,8 @@ if (screenHeight >= 1080) {
   document.body.style.zoom = 0.63;
 }
 }
+
+// Okay, let's start declaring some key variables functions
 let currentGame;
 let inGameStart = true;
 let startStep = 0;

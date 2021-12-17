@@ -5,7 +5,7 @@ THIS README IS STILL UNDER CONSTRUCTION!
 *A game about a good girl (who knows how to cross the road).*
 *by Diogo Carneiro (https://github.com/diogoascarneiro)*
 
-![A gameplay gif of LCTR]https://github.com/diogoascarneiro/lola-crosses-the-road/blob/master/LCTR.gif
+![A gameplay gif of LCTR](https://github.com/diogoascarneiro/lola-crosses-the-road/blob/master/LCTR.gif)
 
 ---
 
@@ -13,7 +13,7 @@ THIS README IS STILL UNDER CONSTRUCTION!
 
 This game was created while studying at Ironhack Lisbon in under two weeks, and was the first individual project developed there. The requirements were to use JS, DOM Manipulation and HTML Canvas to create a game of our choosing. Since I happen to be the happy pet parent of a four-legged princess / drama queen that I taught not to cross any road without permission, the choice was clear. I mean, just look at her.
 
-![This is Lola!]https://raw.githubusercontent.com/diogoascarneiro/lola-crosses-the-road/master/Lola.jpg
+![This is Lola!](https://raw.githubusercontent.com/diogoascarneiro/lola-crosses-the-road/master/Lola.jpg)
 
 Soon the ideas came flooding into my brain - game mechanics, easter eggs, concentration bars, a dog treat-based score system... but alas, I only had two weeks to do this. So the multi-title franchise that would catapult my dog into the homes and hearts of gamers everywhere suddenly became...a Frogger clone. And you know what? That's pretty cool too.
 
@@ -31,6 +31,7 @@ This code is under the GNU General Public License v3.0 license.
 
 # Credits
 **Music:** Mimimic (Diogo Carneiro)
+
 **Image Assets:**
 - [City Pack - Top Down - Pixel Art by NYKNCK](https://nyknck.itch.io/citypackpixelart)
 - [Pixel Dogs by Benvictus (modified by me)](https://benvictus.itch.io/pixel-dogs) 

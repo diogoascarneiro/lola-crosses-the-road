@@ -94,7 +94,7 @@ simpleDraw(carSprites, this.type, this.x, this.y, 1.5, 1.5, this.direction);
 This code is under the [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/#) license.
 
 # Credits
-**Music:** Mimimic (Diogo Carneiro)
+**Music:** [Mimimic](https://mimimic.bandcamp.com/) (Diogo Carneiro aka me)
 
 **Image Assets:**
 - [City Pack - Top Down - Pixel Art by NYKNCK](https://nyknck.itch.io/citypackpixelart)

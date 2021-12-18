@@ -15,6 +15,11 @@ class Dog {
   move(key) {
     switch (key) {
       case "ArrowUp":
+        if (this.direction === "left") {
+          this.animWalkLeft();
+        } else if (this.direction === "right") {
+          this.animWalkRight();
+        }
         if (this.y > 0) {
           this.y -= this.dy;
         }
@@ -26,6 +31,11 @@ class Dog {
         }
         break;
       case "ArrowDown":
+        if (this.direction === "left") {
+          this.animWalkLeft();
+        } else if (this.direction === "right") {
+          this.animWalkRight();
+        }
         if (this.y < canvas.height) {
           this.y += this.dy;
         }

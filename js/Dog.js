@@ -7,6 +7,7 @@ class Dog {
     this.width = width;
     this.height = height;
     this.direction = "right";
+    //this.activeFrame = 0;
   }
 
   /* Movement method. */
@@ -64,59 +65,26 @@ class Dog {
 
   animWalkLeft() {
     this.direction = "left";
-    lolaSpriteLeft.row = 1;
-    lolaSpriteLeft.column = 1;
-    lolaSpriteLeft.wOffset = 15;
-    lolaSpriteLeft.hOffset = -20;
-  }
+    activeDogFrame++;
+    if (activeDogFrame >= 7) {
+      activeDogFrame = 0
+    }
+    lolaWalking.walking.left = {spriteSX: 0 + (activeDogFrame * 64), spriteSY: 0}
+    }
 
   animWalkRight() {
     this.direction = "right";
-    lolaSpriteLeft.row = 1;
-    lolaSpriteLeft.column = 1;
-    lolaSpriteLeft.wOffset = 15;
-    lolaSpriteLeft.hOffset = -20;
+    activeDogFrame++;
+    if (activeDogFrame >= 7) {
+      activeDogFrame = 0
+    }
+    lolaWalking.walking.right = {spriteSX: 0 + (activeDogFrame * 64), spriteSY: 32}
   }
 
   /* drawing animations starts here */
   drawDog() {
-    // NEED TO TIDY UP THE IMAGE AND CHANGE THIS ASSET!
-    if (this.direction === "left") {
-      let spriteSX =
-        lolaSpriteLeft.column * lolaSpriteLeft.frameWidth +
-        lolaSpriteLeft.wOffset;
-      let spriteSY =
-        lolaSpriteLeft.row * lolaSpriteLeft.frameHeight +
-        lolaSpriteLeft.hOffset;
-      ctx.drawImage(
-        lolaSpriteLeft,
-        spriteSX,
-        spriteSY,
-        lolaSpriteLeft.frameWidth,
-        lolaSpriteLeft.frameHeight,
-        this.x,
-        this.y,
-        lolaSpriteLeft.frameWidth,
-        lolaSpriteLeft.frameHeight
-      );
-    } else if (this.direction === "right") {
-      let spriteSX =
-        lolaSpriteRight.column * lolaSpriteRight.frameWidth +
-        lolaSpriteRight.wOffset;
-      let spriteSY =
-        lolaSpriteRight.row * lolaSpriteRight.frameHeight +
-        lolaSpriteRight.hOffset;
-      ctx.drawImage(
-        lolaSpriteRight,
-        spriteSX,
-        spriteSY,
-        lolaSpriteRight.frameWidth,
-        lolaSpriteRight.frameHeight,
-        this.x,
-        this.y,
-        lolaSpriteRight.frameWidth,
-        lolaSpriteRight.frameHeight
-      );
+    switch (this.direction) {
+      default: simpleDraw(lolaWalking, "walking", this.x, this.y, 1, 1, this.direction);
     }
   }
 }

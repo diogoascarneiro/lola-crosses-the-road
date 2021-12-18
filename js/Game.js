@@ -15,6 +15,7 @@ class Game {
   }
 
   level1() {
+
     //Create some people
   this.obstacles.push(
     //Top

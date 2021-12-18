@@ -1,5 +1,7 @@
 let assetsArray = [];
 let imagesLoaded = 0;
+// I don't like doing it like this but time's of the essence!
+let activeDogFrame = 0;
 
 class ImgAsset extends Image {
   constructor(src, frameWidth, frameHeight, wOffset, hOffset) {
@@ -46,23 +48,29 @@ gameOverScreen2.register();
  * Need to change to a new asset!
  */
 
-let lolaSpriteLeft = new ImgAsset(
-  "assets/lola-sprite-left.png",
-  55,
-  35,
-  15,
-  -18
-);
-lolaSpriteLeft.register();
-let lolaSpriteRight = new ImgAsset(
-  "assets/lola-sprite-right.png",
-  55,
-  35,
-  15,
-  -18
-);
-lolaSpriteRight.register();
-lolaSpriteRight.column = 13.7;
+// I'm animating this one, so there's a special activeFrame key here
+let lolaWalking = new ImgAsset("./assets/lola-walk.png");
+lolaWalking.register();
+lolaWalking.walking = {
+  frameWidth: 64,
+  frameHeight: 32,
+  left: {spriteSX: 0 + (activeDogFrame * 64), spriteSY: 0 + (activeDogFrame * 32)},
+  right: {spriteSX: 0 + (activeDogFrame * 64), spriteSY: 32 +(activeDogFrame * 32)}
+}
+
+// lolaWalking.walking = {
+//   activeFrame: 0,
+//   changeFrame: function() { 
+//     this.activeFrame++;
+//     if (this.activeFrame >= 7) {
+//       this.activeFrame = 0
+//     }
+//   },
+//   frameWidth: 64,
+//   frameHeight: 32,
+//   left: {spriteSX: 0 + (this.activeFrame * 32), spriteSY: 0 + (this.activeFrame * 32)},
+//   right: { spriteSX: 0 + this.activeFrame * 32, spriteSY: 0 + (this.activeFrame * 32)}
+// }
 
 /* Car Sprites */
 

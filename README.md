@@ -8,6 +8,9 @@
 ![A gameplay gif of LCTR](https://github.com/diogoascarneiro/lola-crosses-the-road/blob/master/LCTR.gif)
 
 ---
+# Play it here!
+[LOLA CROSSES THE ROAD ON GITHUB](https://diogoascarneiro.github.io/lola-crosses-the-road/)
+---
 
 # About
 
@@ -19,8 +22,13 @@ I mean, just look at her. :dog2: 	:sparkling_heart:
 
 Soon the ideas came flooding into my brain - game mechanics, easter eggs, concentration bars, a dog treat-based score system... but alas, I only had two weeks to do this. So the multi-title franchise that would catapult my dog into the homes and hearts of gamers everywhere suddenly became...a Frogger clone. And you know what? That's pretty cool too.
 
+# Controls :joystick:
+Use the arrow keys to move! Simple as that. 
+
+---
+
 ## Technologies used
-"Lola Crosses The Road" is written in vanilla Javascript, and uses HTML Canvas and CSS to present it as a browser game. It makes extensive use of 16x16 image assets arranged in a tileset. To make working with them easier, I've created a few ways to add new assets to the game and then draw them (without using that gigantic ctx.drawImage function). Some examples:
+"Lola Crosses The Road" is written in vanilla Javascript, and uses HTML Canvas and CSS to present it as a browser game. It follows OOP (Object Oriented Programming) principles (for the most part), and makes extensive use of 16x16 image assets arranged in a tileset. To make working with them easier, I've created a few ways to add new assets to the game and then draw them (without using that gigantic ctx.drawImage function). Some examples:
 
 ### Adding an image asset (tileset or sprite)
 ```

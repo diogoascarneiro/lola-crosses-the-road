@@ -176,6 +176,15 @@ class Person extends MovingObstacle {
 
   moveUp() {
     this.direction = "up";
+
+    activePeopleFrame++;
+    if (activePeopleFrame >= 2) {
+      activePeopleFrame = 0
+    }
+    switch (this.type) {
+      default: peopleSet1[`${this.type}`].up.spriteSX = peopleSet1[`${this.type}`].up.spriteSX + (activePeopleFrame * 48);
+    }
+
     if (this.y > 0) {
       this.y -= this.dy;
     }
@@ -188,6 +197,16 @@ class Person extends MovingObstacle {
   }
   moveDown() {
     this.direction = "down";
+
+    activePeopleFrame++;
+    if (activePeopleFrame >= 2) {
+      activePeopleFrame = 0
+    }
+
+    switch (this.type) {
+      default: peopleSet1[`${this.type}`].down.spriteSX = peopleSet1[`${this.type}`].up.spriteSX + (activePeopleFrame * 48);
+    }
+
     if (this.y < canvas.height) {
       this.y += this.dy;
     }
@@ -201,6 +220,15 @@ class Person extends MovingObstacle {
 
   moveLeft() {
     this.direction = "left";
+
+    activePeopleFrame++;
+    if (activePeopleFrame >= 2) {
+      activePeopleFrame = 0
+    }
+    switch (this.type) {
+      default: peopleSet1[`${this.type}`].left.spriteSX = peopleSet1[`${this.type}`].up.spriteSX + (activePeopleFrame * 48);
+    }
+
     if (this.x > 0) {
       this.x -= this.dx;
     }
@@ -213,6 +241,15 @@ class Person extends MovingObstacle {
   }
   moveRight() {
     this.direction = "right";
+
+    activePeopleFrame++;
+    if (activePeopleFrame >= 2) {
+      activePeopleFrame = 0
+    }
+    switch (this.type) {
+      default: peopleSet1[`${this.type}`].right.spriteSX = peopleSet1[`${this.type}`].up.spriteSX + (activePeopleFrame * 48);
+    }
+
     if (this.x < canvas.width - this.width) {
       this.x += this.dx;
     }

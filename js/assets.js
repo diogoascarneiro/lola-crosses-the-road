@@ -2,6 +2,7 @@ let assetsArray = [];
 let imagesLoaded = 0;
 // I don't like doing it like this but time's of the essence!
 let activeDogFrame = 0;
+let activePeopleFrame = 0;
 
 class ImgAsset extends Image {
   constructor(src, frameWidth, frameHeight, wOffset, hOffset) {
@@ -55,22 +56,8 @@ lolaWalking.walking = {
   frameWidth: 64,
   frameHeight: 32,
   left: {spriteSX: 0 + (activeDogFrame * 64), spriteSY: 0 + (activeDogFrame * 32)},
-  right: {spriteSX: 0 + (activeDogFrame * 64), spriteSY: 32 +(activeDogFrame * 32)}
+  right: {spriteSX: 0 + (activeDogFrame * 64), spriteSY: 32 + (activeDogFrame * 32)}
 }
-
-// lolaWalking.walking = {
-//   activeFrame: 0,
-//   changeFrame: function() { 
-//     this.activeFrame++;
-//     if (this.activeFrame >= 7) {
-//       this.activeFrame = 0
-//     }
-//   },
-//   frameWidth: 64,
-//   frameHeight: 32,
-//   left: {spriteSX: 0 + (this.activeFrame * 32), spriteSY: 0 + (this.activeFrame * 32)},
-//   right: { spriteSX: 0 + this.activeFrame * 32, spriteSY: 0 + (this.activeFrame * 32)}
-// }
 
 /* Car Sprites */
 
@@ -298,38 +285,74 @@ peopleSet1.register();
 peopleSet1.male1 = {
   frameWidth: 48,
   frameHeight: 72,
-  up: { spriteSX: 1 * 48, spriteSY: 6 * 48 },
-  down: { spriteSX: 1 * 48, spriteSY: 0 },
-  left: { spriteSX: 1 * 48, spriteSY: 2 * 48 },
-  right: { spriteSX: 1 * 48, spriteSY: 4 * 48 },
+  up: { spriteSX: 0, spriteSY: 6 * 48 },
+  down: { spriteSX: 0, spriteSY: 0 },
+  left: { spriteSX: 0, spriteSY: 2 * 48 },
+  right: { spriteSX: 0, spriteSY: 4 * 48 },
 };
 
 peopleSet1.male2 = {
   frameWidth: 48,
   frameHeight: 72,
-  up: { spriteSX: 7 * 48, spriteSY: 6 * 48 },
-  down: { spriteSX: 7 * 48, spriteSY: 0 },
-  left: { spriteSX: 7 * 48, spriteSY: 2 * 48 },
-  right: { spriteSX: 7 * 48, spriteSY: 4 * 48 },
+  up: { spriteSX: 6 * 48, spriteSY: 6 * 48 },
+  down: { spriteSX: 6 * 48, spriteSY: 0 },
+  left: { spriteSX: 6 * 48, spriteSY: 2 * 48 },
+  right: { spriteSX: 6 * 48, spriteSY: 4 * 48 },
 };
 
 peopleSet1.male3 = {
   frameWidth: 48,
   frameHeight: 72,
-  up: { spriteSX: 10 * 48, spriteSY: 6 * 48 },
-  down: { spriteSX: 10 * 48, spriteSY: 0 },
-  left: { spriteSX: 10 * 48, spriteSY: 2 * 48 },
-  right: { spriteSX: 10 * 48, spriteSY: 4 * 48 },
+  up: { spriteSX: 9 * 48, spriteSY: 6 * 48 },
+  down: { spriteSX: 9 * 48, spriteSY: 0 },
+  left: { spriteSX: 9 * 48, spriteSY: 2 * 48 },
+  right: { spriteSX: 9 * 48, spriteSY: 4 * 48 },
 };
 
 peopleSet1.female1 = {
   frameWidth: 48,
   frameHeight: 72,
-  up: { spriteSX: 4 * 48, spriteSY: 6 * 48 },
-  down: { spriteSX: 4 * 48, spriteSY: 0 },
-  left: { spriteSX: 4 * 48, spriteSY: 2 * 48 },
-  right: { spriteSX: 4 * 48, spriteSY: 4 * 48 },
+  up: { spriteSX: 3 * 48, spriteSY: 6 * 48 },
+  down: { spriteSX: 3 * 48, spriteSY: 0 },
+  left: { spriteSX: 3 * 48, spriteSY: 2 * 48 },
+  right: { spriteSX: 3 * 48, spriteSY: 4 * 48 },
 };
+
+// peopleSet1.male1 = {
+//   frameWidth: 48,
+//   frameHeight: 72,
+//   up: { spriteSX: 1 * 48, spriteSY: 6 * 48 },
+//   down: { spriteSX: 1 * 48, spriteSY: 0 },
+//   left: { spriteSX: 1 * 48, spriteSY: 2 * 48 },
+//   right: { spriteSX: 1 * 48, spriteSY: 4 * 48 },
+// };
+
+// peopleSet1.male2 = {
+//   frameWidth: 48,
+//   frameHeight: 72,
+//   up: { spriteSX: 7 * 48, spriteSY: 6 * 48 },
+//   down: { spriteSX: 7 * 48, spriteSY: 0 },
+//   left: { spriteSX: 7 * 48, spriteSY: 2 * 48 },
+//   right: { spriteSX: 7 * 48, spriteSY: 4 * 48 },
+// };
+
+// peopleSet1.male3 = {
+//   frameWidth: 48,
+//   frameHeight: 72,
+//   up: { spriteSX: 10 * 48, spriteSY: 6 * 48 },
+//   down: { spriteSX: 10 * 48, spriteSY: 0 },
+//   left: { spriteSX: 10 * 48, spriteSY: 2 * 48 },
+//   right: { spriteSX: 10 * 48, spriteSY: 4 * 48 },
+// };
+
+// peopleSet1.female1 = {
+//   frameWidth: 48,
+//   frameHeight: 72,
+//   up: { spriteSX: 4 * 48, spriteSY: 6 * 48 },
+//   down: { spriteSX: 4 * 48, spriteSY: 0 },
+//   left: { spriteSX: 4 * 48, spriteSY: 2 * 48 },
+//   right: { spriteSX: 4 * 48, spriteSY: 4 * 48 },
+// };
 
 /* YAY, trying out sounds too! */
 

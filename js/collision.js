@@ -1,5 +1,6 @@
 /* COLLISION DETECTION
- *  The function to call for collision detection should be hasCollided() and not detectCollision() */
+ *  hasCollided() checks for collision between an object and anything else,
+*   detectCollision() checks for collision between two specific objects */
 
 function detectCollision(entity, obstacle) {
   let entityLeft = entity.x;

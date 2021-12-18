@@ -77,11 +77,10 @@ class Dog {
     lolaSpriteLeft.wOffset = 15;
     lolaSpriteLeft.hOffset = -20;
   }
+
   /* drawing animations starts here */
   drawDog() {
-    
-
-    // NEED TO MAKE THE DOG SPRITE INTO MULTIPLES OF 16!
+    // NEED TO TIDY UP THE IMAGE AND CHANGE THIS ASSET!
     if (this.direction === "left") {
       let spriteSX =
         lolaSpriteLeft.column * lolaSpriteLeft.frameWidth +

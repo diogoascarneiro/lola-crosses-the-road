@@ -13,8 +13,7 @@ class ImgAsset extends Image {
     this.row = 1;
     this.column = 1;
   }
-  /* ver como passar isto imediatamente ao criar um novo objecto desta classe em vez de ter que chamar o metodo separadamente */
-  register() {
+    register() {
     assetsArray.push(this);
   }
 }
@@ -44,7 +43,7 @@ let gameWinScreen2 = new ImgAsset("./assets/gamewin2.png");
 gameOverScreen2.register();
 
 /* LOLA'S SPRITE <3
- * Need to figure out a way to make the frames jump evenly by changing row and column!
+ * Need to change to a new asset!
  */
 
 let lolaSpriteLeft = new ImgAsset(
@@ -323,9 +322,6 @@ peopleSet1.female1 = {
   left: { spriteSX: 4 * 48, spriteSY: 2 * 48 },
   right: { spriteSX: 4 * 48, spriteSY: 4 * 48 },
 };
-
-// const male3run = new ImgAsset("./assets/male1-32x24.png", 32, 24, 0, 0);
-// male3run.register();
 
 /* YAY, trying out sounds too! */
 

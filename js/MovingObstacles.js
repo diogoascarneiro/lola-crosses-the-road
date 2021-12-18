@@ -241,7 +241,7 @@ class Person extends MovingObstacle {
         break;
     }
   }
-
+ // this could be simpler (just one case - like I did somewhere else in the code)
   drawObstacle() {
     switch (this.type) {
       case "male1":

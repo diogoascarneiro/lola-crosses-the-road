@@ -3,7 +3,8 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 // I made the canvas too big (insert the price is right losing sound here)
-// so now I have to check for different screen sizes and zoom out accordingly
+// So now I have to check for different screen sizes and zoom out accordingly
+// Not the best solution to be sure, but hey, the clock's ticking
 
 function adjustZoom() {
 let screenHeight = window.screen.height;
@@ -15,7 +16,7 @@ if (screenHeight >= 1080) {
 }
 }
 
-// Okay, let's start declaring some key variables functions
+// Okay, let's start declaring some key variables and functions
 let currentGame;
 let inGameStart = true;
 let startStep = 0;
@@ -93,7 +94,8 @@ function aWinnerIsYou() {
   printHiScores(hiScores);
 }
 
-/* Here comes the main one */
+/* Here comes the big one - canvas updates are done here */
+
 function updateEverything() {
   //Draw & move everything
   clearCanvas();
@@ -117,6 +119,7 @@ function updateEverything() {
   }
 }
 
+// Check for keypresses to play the game or jump through start/win/game over screens
 document.addEventListener("keydown", (keyboardEvent) => {
   if (inGameStart) {
     if (startStep === 0 && keyboardEvent.key === "Enter") {ctx.drawImage(startScreen2, 0, 0); startStep = 1;}

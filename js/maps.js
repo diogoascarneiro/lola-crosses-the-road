@@ -1,9 +1,3 @@
-/* Cheat Sheet - for studying
-     * ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
-     * image = source image; sx and sy = the top/left coordinates to "slice" the img; sWidth & sHeight = the bottom/right coordinates to slice the img
-     * dx, dy, dwidth & dheight = onde as colocar)
-     */
-
 /* Tired of writing these incredibly long drawImage functions? Use my patented solution, the simpleDraw function!
  *  Simply feed the function the following arguments:
  *  imgObject = the imgAsset object aka tileset/sprite;
@@ -50,10 +44,10 @@ function simpleDraw(
   }
 }
 
-/* Note to self: make a billboard with LOLA coffee */
+/* Note to self: make a billboard with LOLA Coffee */
 
 function drawMap() {
-  // Cover the map with bricks
+  // Cover the map with bricks (note - update this to simpleDraw())
 
   for (let i = 0; i < canvas.width / 32; i++) {
     for (let j = 0; j < canvas.height / 32; j++) {
@@ -71,7 +65,7 @@ function drawMap() {
     }
   }
 
-  // How about some grass?
+  // How about some grass? (Note: a nested loop here would look better... like the one below)
 
   for (let i = 0; i < canvas.width / 16; i++) {
     //Top

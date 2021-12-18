@@ -16,7 +16,7 @@ class ImgAsset extends Image {
     this.row = 1;
     this.column = 1;
   }
-    register() {
+  register() {
     assetsArray.push(this);
   }
 }
@@ -55,9 +55,15 @@ lolaWalking.register();
 lolaWalking.walking = {
   frameWidth: 64,
   frameHeight: 32,
-  left: {spriteSX: 0 + (activeDogFrame * 64), spriteSY: 0 + (activeDogFrame * 32)},
-  right: {spriteSX: 0 + (activeDogFrame * 64), spriteSY: 32 + (activeDogFrame * 32)}
-}
+  left: {
+    spriteSX: 0 + activeDogFrame * 64,
+    spriteSY: 0 + activeDogFrame * 32,
+  },
+  right: {
+    spriteSX: 0 + activeDogFrame * 64,
+    spriteSY: 32 + activeDogFrame * 32,
+  },
+};
 
 /* Car Sprites */
 
@@ -71,7 +77,7 @@ carSprites.red = {
   down: { spriteSX: 0, spriteSY: 3 * 32 },
   left: { spriteSX: 0, spriteSY: 1 * 32 },
   right: { spriteSX: 0, spriteSY: 0 },
-}
+};
 
 carSprites.green = {
   frameWidth: 48,
@@ -80,7 +86,7 @@ carSprites.green = {
   down: { spriteSX: 1 * 48, spriteSY: 3 * 32 },
   left: { spriteSX: 1 * 48, spriteSY: 1 * 32 },
   right: { spriteSX: 1 * 48, spriteSY: 0 },
-}
+};
 
 carSprites.blue = {
   frameWidth: 48,
@@ -89,7 +95,7 @@ carSprites.blue = {
   down: { spriteSX: 2 * 48, spriteSY: 3 * 32 },
   left: { spriteSX: 2 * 48, spriteSY: 1 * 32 },
   right: { spriteSX: 2 * 48, spriteSY: 0 },
-}
+};
 
 /* CITY TILESETS 1 & 2 */
 
@@ -171,14 +177,14 @@ cityTileset.bench = {
   frameHeight: 16,
   spriteSX: 21 * 16,
   spriteSY: 5 * 16,
-}
+};
 
 cityTileset.trashBin = {
   frameWidth: 16,
   frameHeight: 16,
   spriteSX: 20 * 16,
   spriteSY: 6 * 16,
-}
+};
 
 cityTileset.crosswalk = {
   frameWidth: 16,
@@ -192,7 +198,7 @@ cityTileset.pavement = {
   frameHeight: 16,
   spriteSX: 22 * 16,
   spriteSY: 2 * 16,
-}
+};
 
 const cityTileset2 = new ImgAsset("./assets/city-tileset2.png", 16, 16, 0, 0);
 cityTileset2.register();
@@ -213,7 +219,7 @@ cityTileset2.house1 = {
 
 // BUILDINGS
 
-const buildingSet = new ImgAsset("./assets/buildings.png", 32,32, 0, 0);
+const buildingSet = new ImgAsset("./assets/buildings.png", 32, 32, 0, 0);
 buildingSet.register();
 
 buildingSet.tallRed = {
@@ -221,62 +227,62 @@ buildingSet.tallRed = {
   frameHeight: 96,
   spriteSX: 0,
   spriteSY: 0,
-}
+};
 
 buildingSet.tallBlue = {
   frameWidth: 48,
   frameHeight: 96,
   spriteSX: 48,
   spriteSY: 0,
-}
+};
 
 buildingSet.mall = {
   frameWidth: 79,
   frameHeight: 96,
   spriteSX: 3 * 48 + 1,
   spriteSY: 0,
-}
+};
 
 buildingSet.tallOffice = {
   frameWidth: 48,
   frameHeight: 96,
   spriteSX: 224,
   spriteSY: 0,
-}
+};
 
 buildingSet.wideStore = {
   frameWidth: 64,
   frameHeight: 48,
   spriteSX: 0,
-  spriteSY: 96
-}
+  spriteSY: 96,
+};
 
 buildingSet.tinyHouse = {
   frameWidth: 32,
   frameHeight: 48,
   spriteSX: 160,
-  spriteSY: 96
-}
+  spriteSY: 96,
+};
 
 buildingSet.pokeCenter = {
   frameWidth: 64,
   frameHeight: 64,
   spriteSX: 0,
-  spriteSY: 144
-}
+  spriteSY: 144,
+};
 
 buildingSet.groceryStore = {
   frameWidth: 64,
   frameHeight: 48,
   spriteSX: 64,
-  spriteSY: 144
-}
+  spriteSY: 144,
+};
 buildingSet.house2 = {
   frameWidth: 48,
   frameHeight: 48,
   spriteSX: 128,
-  spriteSY: 144
-}
+  spriteSY: 144,
+};
 // PEOPLE SPRITES
 
 const peopleSet1 = new ImgAsset("./assets/people1.png", 48, 72, 0, 30);
@@ -317,38 +323,38 @@ peopleSet1.register();
 //    right: { spriteSX: 3 * 48, spriteSY: 4 * 48 },
 //  };
 
-  peopleSet1.male1 = {
-    frameWidth: 48,
-    frameHeight: 72,
-    up: { spriteSX: 1 * 48, spriteSY: 6 * 48 },
-    down: { spriteSX: 1 * 48, spriteSY: 0 },
-    left: { spriteSX: 1 * 48, spriteSY: 2 * 48 },
-    right: { spriteSX: 1 * 48, spriteSY: 4 * 48 },
-  };
-  peopleSet1.male2 = {
-    frameWidth: 48,
-    frameHeight: 72,
-    up: { spriteSX: 7 * 48, spriteSY: 6 * 48 },
-    down: { spriteSX: 7 * 48, spriteSY: 0 },
-    left: { spriteSX: 7 * 48, spriteSY: 2 * 48 },
-    right: { spriteSX: 7 * 48, spriteSY: 4 * 48 },
-  };
-  peopleSet1.male3 = {
-    frameWidth: 48,
-    frameHeight: 72,
-    up: { spriteSX: 10 * 48, spriteSY: 6 * 48 },
-    down: { spriteSX: 10 * 48, spriteSY: 0 },
-    left: { spriteSX: 10 * 48, spriteSY: 2 * 48 },
-    right: { spriteSX: 10 * 48, spriteSY: 4 * 48 },
-  };
-  peopleSet1.female1 = {
-    frameWidth: 48,
-    frameHeight: 72,
-    up: { spriteSX: 4 * 48, spriteSY: 6 * 48 },
-    down: { spriteSX: 4 * 48, spriteSY: 0 },
-    left: { spriteSX: 4 * 48, spriteSY: 2 * 48 },
-    right: { spriteSX: 4 * 48, spriteSY: 4 * 48 },
-  };
+peopleSet1.male1 = {
+  frameWidth: 48,
+  frameHeight: 72,
+  up: { spriteSX: 1 * 48, spriteSY: 6 * 48 },
+  down: { spriteSX: 1 * 48, spriteSY: 0 },
+  left: { spriteSX: 1 * 48, spriteSY: 2 * 48 },
+  right: { spriteSX: 1 * 48, spriteSY: 4 * 48 },
+};
+peopleSet1.male2 = {
+  frameWidth: 48,
+  frameHeight: 72,
+  up: { spriteSX: 7 * 48, spriteSY: 6 * 48 },
+  down: { spriteSX: 7 * 48, spriteSY: 0 },
+  left: { spriteSX: 7 * 48, spriteSY: 2 * 48 },
+  right: { spriteSX: 7 * 48, spriteSY: 4 * 48 },
+};
+peopleSet1.male3 = {
+  frameWidth: 48,
+  frameHeight: 72,
+  up: { spriteSX: 10 * 48, spriteSY: 6 * 48 },
+  down: { spriteSX: 10 * 48, spriteSY: 0 },
+  left: { spriteSX: 10 * 48, spriteSY: 2 * 48 },
+  right: { spriteSX: 10 * 48, spriteSY: 4 * 48 },
+};
+peopleSet1.female1 = {
+  frameWidth: 48,
+  frameHeight: 72,
+  up: { spriteSX: 4 * 48, spriteSY: 6 * 48 },
+  down: { spriteSX: 4 * 48, spriteSY: 0 },
+  left: { spriteSX: 4 * 48, spriteSY: 2 * 48 },
+  right: { spriteSX: 4 * 48, spriteSY: 4 * 48 },
+};
 
 /* YAY, trying out sounds too! */
 

@@ -15,7 +15,7 @@ class Obstacle {
   register() {
     if (!currentGame.objects.includes(this)) {
       currentGame.objects.push(this);
-      }
+    }
   }
 }
 
@@ -33,8 +33,15 @@ class DecorObst extends Obstacle {
 
   drawObstacle() {
     switch (this.type) {
-       case this.type:
-        simpleDraw(cityTileset, this.type, this.x, this.y, this.widthMultiplier, this.heightMultiplier)
+      case this.type:
+        simpleDraw(
+          cityTileset,
+          this.type,
+          this.x,
+          this.y,
+          this.widthMultiplier,
+          this.heightMultiplier
+        );
         break;
     }
   }
@@ -57,7 +64,7 @@ class Road extends Obstacle {
         cityTileset,
         "pavement",
         i * (16 * this.heightMultiplier),
-        this.y - (4 * this.heightMultiplier),
+        this.y - 4 * this.heightMultiplier,
         this.heightMultiplier,
         this.heightMultiplier / 4
       );
@@ -73,7 +80,7 @@ class Road extends Obstacle {
         cityTileset,
         "roadBottom",
         i * (16 * this.heightMultiplier),
-        this.y + (16 * this.heightMultiplier),
+        this.y + 16 * this.heightMultiplier,
         this.heightMultiplier,
         this.heightMultiplier
       );
@@ -81,13 +88,12 @@ class Road extends Obstacle {
         cityTileset,
         "pavement",
         i * (16 * this.heightMultiplier),
-        this.y + (32 * this.heightMultiplier),
+        this.y + 32 * this.heightMultiplier,
         this.heightMultiplier,
         this.heightMultiplier / 4
       );
     }
   }
-  
 }
 
 class Crosswalk {
@@ -99,7 +105,7 @@ class Crosswalk {
   }
 
   drawCrosswalk() {
-      simpleDraw(
+    simpleDraw(
       cityTileset,
       "crosswalk",
       this.x,
@@ -111,7 +117,7 @@ class Crosswalk {
       cityTileset,
       "crosswalk",
       this.x,
-      this.y + (16 * this.heightMultiplier),
+      this.y + 16 * this.heightMultiplier,
       this.heightMultiplier,
       this.heightMultiplier
     );
@@ -119,16 +125,15 @@ class Crosswalk {
 }
 
 /* This function doesn't actually draw separate roads - it just creates one spanning the canvas.
-*  Then it creates road objects which are slightly smaller than the road image itself, just to 
-*  make it easier for Lola to cross the road without colliding. She deserves it! <3
-*/
+ *  Then it creates road objects which are slightly smaller than the road image itself, just to
+ *  make it easier for Lola to cross the road without colliding. She deserves it! <3
+ */
 
 function createRoad(y, numOfCrosswalks) {
-
   let cwLocationArr = [
-    canvas.width/2,
-    [canvas.width/3, (canvas.width / 3 * 2)],
-    [(canvas.width / 4), (canvas.width / 4 * 2), (canvas.width / 4 * 3)]
+    canvas.width / 2,
+    [canvas.width / 3, (canvas.width / 3) * 2],
+    [canvas.width / 4, (canvas.width / 4) * 2, (canvas.width / 4) * 3],
   ];
 
   if (numOfCrosswalks === 0 || numOfCrosswalks > 3) {
@@ -137,32 +142,38 @@ function createRoad(y, numOfCrosswalks) {
 
   switch (numOfCrosswalks) {
     case 1:
-    currentGame.crosswalks.push(new Crosswalk(cwLocationArr[0] - 64, y, 64, 4));
-    currentGame.obstacles.push(
-      new Road(0, y, cwLocationArr[0] - 88, 4),
-      new Road(cwLocationArr[0] + 24, y, cwLocationArr[0] + 256, 4));
-    break;
-    case 2:
-    currentGame.crosswalks.push(
-      new Crosswalk(cwLocationArr[1][0] - 64, y, 64, 4),
-      new Crosswalk(cwLocationArr[1][1] - 64, y, 64, 4)
+      currentGame.crosswalks.push(
+        new Crosswalk(cwLocationArr[0] - 64, y, 64, 4)
       );
-    currentGame.obstacles.push(
-      new Road(0, y, cwLocationArr[1][0] - 88, 4),
-      new Road(cwLocationArr[1][0] + 24, y, cwLocationArr[1][0] - 112, 4),
-      new Road(cwLocationArr[1][1] + 24, y, cwLocationArr[1][0] + 256, 4));
-    break;
+      currentGame.obstacles.push(
+        new Road(0, y, cwLocationArr[0] - 88, 4),
+        new Road(cwLocationArr[0] + 24, y, cwLocationArr[0] + 256, 4)
+      );
+      break;
+    case 2:
+      currentGame.crosswalks.push(
+        new Crosswalk(cwLocationArr[1][0] - 64, y, 64, 4),
+        new Crosswalk(cwLocationArr[1][1] - 64, y, 64, 4)
+      );
+      currentGame.obstacles.push(
+        new Road(0, y, cwLocationArr[1][0] - 88, 4),
+        new Road(cwLocationArr[1][0] + 24, y, cwLocationArr[1][0] - 112, 4),
+        new Road(cwLocationArr[1][1] + 24, y, cwLocationArr[1][0] + 256, 4)
+      );
+      break;
     case 3:
-    currentGame.crosswalks.push(
-      new Crosswalk(cwLocationArr[2][0] - 64, y, 64, 4),
-      new Crosswalk(cwLocationArr[2][1] - 64, y, 64, 4),
-      new Crosswalk(cwLocationArr[2][2] - 64, y, 64, 4));
-    currentGame.obstacles.push(
-      new Road(0, y, cwLocationArr[2][0] - 88, 4),
-      new Road(cwLocationArr[2][0] + 24, y, cwLocationArr[2][0] - 112, 4),
-      new Road(cwLocationArr[2][1] + 24, y, cwLocationArr[2][0] - 112, 4),
-      new Road(cwLocationArr[2][2] + 24, y, cwLocationArr[2][0] + 256, 4));
-    break;
+      currentGame.crosswalks.push(
+        new Crosswalk(cwLocationArr[2][0] - 64, y, 64, 4),
+        new Crosswalk(cwLocationArr[2][1] - 64, y, 64, 4),
+        new Crosswalk(cwLocationArr[2][2] - 64, y, 64, 4)
+      );
+      currentGame.obstacles.push(
+        new Road(0, y, cwLocationArr[2][0] - 88, 4),
+        new Road(cwLocationArr[2][0] + 24, y, cwLocationArr[2][0] - 112, 4),
+        new Road(cwLocationArr[2][1] + 24, y, cwLocationArr[2][0] - 112, 4),
+        new Road(cwLocationArr[2][2] + 24, y, cwLocationArr[2][0] + 256, 4)
+      );
+      break;
   }
 }
 
@@ -179,19 +190,27 @@ class Building extends Obstacle {
     this.widthMultiplier = widthMultiplier;
     this.heightMultiplier = heightMultiplier;
   }
-    drawObstacle() {
+  drawObstacle() {
     switch (this.type) {
-      default: simpleDraw(buildingSet, this.type, this.x, this.y, this.widthMultiplier, this.heightMultiplier);
+      default:
+        simpleDraw(
+          buildingSet,
+          this.type,
+          this.x,
+          this.y,
+          this.widthMultiplier,
+          this.heightMultiplier
+        );
     }
   }
 
   register() {
     if (!currentGame.objects.includes(this)) {
       currentGame.objects.push(this);
-      }
-      if (!currentGame.buildings.includes(this)) {
-        currentGame.buildings.push(this);
-        }
+    }
+    if (!currentGame.buildings.includes(this)) {
+      currentGame.buildings.push(this);
+    }
   }
 }
 
@@ -199,6 +218,6 @@ class Building extends Obstacle {
 
 function drawBuildings() {
   currentGame.buildings.forEach((building) => {
-    building.drawObstacle();    
+    building.drawObstacle();
   });
 }

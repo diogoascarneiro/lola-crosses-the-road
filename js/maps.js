@@ -75,7 +75,7 @@ function drawMap() {
     simpleDraw(cityTileset, "grass", i * 16, 48, 1, 1);
     simpleDraw(cityTileset, "grass", i * 16, 64, 1, 1);
     simpleDraw(cityTileset, "grass", i * 16, 80, 1, 1);
-        
+
     //Bottom
     simpleDraw(cityTileset, "grass", i * 16, canvas.height - 16, 1, 1);
     simpleDraw(cityTileset, "grass", i * 16, canvas.height - 32, 1, 1);
@@ -84,40 +84,65 @@ function drawMap() {
     simpleDraw(cityTileset, "grass", i * 16, canvas.height - 80, 1, 1);
     simpleDraw(cityTileset, "grass", i * 16, canvas.height - 96, 1, 1);
     simpleDraw(cityTileset, "grass", i * 16, canvas.height - 112, 1, 1);
- }
+  }
 
- for (let i = 0; i < 5; i++) {
-  for (let j = 0; j < 5; j++) {
-    simpleDraw(cityTileset, "grass", 750 - 16 + (16 * i), canvas.height - 348 - 16 + (16*j), 1, 1);
+  for (let i = 0; i < 5; i++) {
+    for (let j = 0; j < 5; j++) {
+      simpleDraw(
+        cityTileset,
+        "grass",
+        750 - 16 + 16 * i,
+        canvas.height - 348 - 16 + 16 * j,
+        1,
+        1
+      );
     }
   }
- 
 
-
- // Draw some sand for the dog park
-for (let i = 0; i < 12; i++) {
-  for (let j = 0; j < 8; j++) {
-    simpleDraw(cityTileset, "sand", 0 + (i * 16), canvas.height - 16 - (j * 16), 1, 1);
+  // Draw some sand for the dog park
+  for (let i = 0; i < 12; i++) {
+    for (let j = 0; j < 8; j++) {
+      simpleDraw(
+        cityTileset,
+        "sand",
+        0 + i * 16,
+        canvas.height - 16 - j * 16,
+        1,
+        1
+      );
     }
   }
- 
 
- // Draw some flowers too
- simpleDraw(cityTileset, "flowers", currentGame.goal.x + 16, currentGame.goal.y + 60, 2, 2);
- simpleDraw(cityTileset, "flowers", currentGame.goal.x + 80, currentGame.goal.y + 60, 2, 2);
- 
+  // Draw some flowers too
+  simpleDraw(
+    cityTileset,
+    "flowers",
+    currentGame.goal.x + 16,
+    currentGame.goal.y + 60,
+    2,
+    2
+  );
+  simpleDraw(
+    cityTileset,
+    "flowers",
+    currentGame.goal.x + 80,
+    currentGame.goal.y + 60,
+    2,
+    2
+  );
+
   // Let's make sure we draw all the static obstacles and crosswalks we created!
   // Note to self: make these separate functions so I can reorder them more easily
 
   currentGame.obstacles.forEach((obst) => {
     if (!(obst instanceof Person) && !(obst instanceof Building)) {
       obst.drawObstacle();
-    }  
+    }
   });
   currentGame.crosswalks.forEach((cw) => {
     cw.drawCrosswalk();
   });
   currentGame.people.forEach((person) => {
-    person.drawObstacle();    
+    person.drawObstacle();
   });
 }

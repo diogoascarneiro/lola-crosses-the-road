@@ -77,24 +77,39 @@ class Dog {
     this.direction = "left";
     activeDogFrame++;
     if (activeDogFrame >= 7) {
-      activeDogFrame = 0
+      activeDogFrame = 0;
     }
-    lolaWalking.walking.left = {spriteSX: 0 + (activeDogFrame * 64), spriteSY: 0}
-    }
+    lolaWalking.walking.left = {
+      spriteSX: 0 + activeDogFrame * 64,
+      spriteSY: 0,
+    };
+  }
 
   animWalkRight() {
     this.direction = "right";
     activeDogFrame++;
     if (activeDogFrame >= 7) {
-      activeDogFrame = 0
+      activeDogFrame = 0;
     }
-    lolaWalking.walking.right = {spriteSX: 0 + (activeDogFrame * 64), spriteSY: 32}
+    lolaWalking.walking.right = {
+      spriteSX: 0 + activeDogFrame * 64,
+      spriteSY: 32,
+    };
   }
 
   /* drawing animations starts here */
   drawDog() {
     switch (this.direction) {
-      default: simpleDraw(lolaWalking, "walking", this.x, this.y, 1, 1, this.direction);
+      default:
+        simpleDraw(
+          lolaWalking,
+          "walking",
+          this.x,
+          this.y,
+          1,
+          1,
+          this.direction
+        );
     }
   }
 }

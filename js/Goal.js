@@ -12,7 +12,7 @@ class Goal extends Obstacle {
   }
 
   drawGoal() {
-    simpleDraw(cityTileset2, "house1", this.x, this.y, 1.5, 1.5)
+    simpleDraw(cityTileset2, "house1", this.x, this.y, 1.5, 1.5);
   }
 
   checkIfWon() {

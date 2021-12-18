@@ -1,17 +1,12 @@
 @font-face {
-  font-family: 'Visitor';
-  src: url('assets/visitor1.ttf');
-} 
+  font-family: "Visitor";
+  src: url("assets/visitor1.ttf");
+}
 body {
-  font-family: 'Visitor';
+  font-family: "Visitor";
   overflow: hidden;
-  background-color:#daefff;
+  background-color: #daefff;
 }
-#canvas {
-  /* border: 7px solid black; */
-}
-
-
 
 h1 {
   font-size: 3.5rem;
@@ -22,21 +17,16 @@ h2 {
 }
 
 li {
-  font-size:1.2rem;
-  text-align:left;
+  font-size: 1.2rem;
+  text-align: left;
 }
 .col-4 {
-  color:black;
+  color: black;
   padding: 1% 4%;
-  /* border-left:6px solid black; */
-  /* height:100vh; */
-  text-align:center
-  }
-
+  text-align: center;
+}
 
 /* Chronometer styles */
-
-
 
 #sphere {
   border: 10px solid #000;

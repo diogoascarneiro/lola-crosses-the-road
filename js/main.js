@@ -7,13 +7,13 @@ const ctx = canvas.getContext("2d");
 // Not the best solution to be sure, but hey, the clock's ticking
 
 function adjustZoom() {
-let screenHeight = window.screen.height;
+  let screenHeight = window.screen.height;
 
-if (screenHeight >= 1080) {
-  document.body.style.zoom = 1;
-} else if ((screenHeight >= 720) && (screenHeight < 1080)) {
-  document.body.style.zoom = 0.63;
-}
+  if (screenHeight >= 1080) {
+    document.body.style.zoom = 1;
+  } else if (screenHeight >= 720 && screenHeight < 1080) {
+    document.body.style.zoom = 0.63;
+  }
 }
 
 // Okay, let's start declaring some key variables and functions
@@ -63,7 +63,7 @@ window.addEventListener("load", (event) => {
     readyToPlay = true;
     clearCanvas();
     ctx.drawImage(startScreen1, 0, 0);
-    }
+  }
 });
 
 /* Main Canvas functions here */
@@ -122,8 +122,14 @@ function updateEverything() {
 // Check for keypresses to play the game or jump through start/win/game over screens
 document.addEventListener("keydown", (keyboardEvent) => {
   if (inGameStart) {
-    if (startStep === 0 && keyboardEvent.key === "Enter") {ctx.drawImage(startScreen2, 0, 0); startStep = 1;}
-    else if (startStep === 1 && readyToPlay === true && keyboardEvent.key === "Enter") {
+    if (startStep === 0 && keyboardEvent.key === "Enter") {
+      ctx.drawImage(startScreen2, 0, 0);
+      startStep = 1;
+    } else if (
+      startStep === 1 &&
+      readyToPlay === true &&
+      keyboardEvent.key === "Enter"
+    ) {
       readyToPlay = false;
       startStep = 0;
       inGameStart = false;
@@ -131,8 +137,14 @@ document.addEventListener("keydown", (keyboardEvent) => {
     }
   }
   if (inGameOver) {
-    if (gameOverStep === 0 && keyboardEvent.key === "Enter") {ctx.drawImage(gameOverScreen2, 0, 0); gameOverStep = 1;}
-    else if (gameOverStep === 1 && readyToPlay === true && keyboardEvent.key === "Enter") {
+    if (gameOverStep === 0 && keyboardEvent.key === "Enter") {
+      ctx.drawImage(gameOverScreen2, 0, 0);
+      gameOverStep = 1;
+    } else if (
+      gameOverStep === 1 &&
+      readyToPlay === true &&
+      keyboardEvent.key === "Enter"
+    ) {
       readyToPlay = false;
       gameOverStep = 0;
       inGameOver = false;
@@ -140,13 +152,21 @@ document.addEventListener("keydown", (keyboardEvent) => {
     }
   }
   if (inGameWin) {
-    if (gameWinStep === 0 && keyboardEvent.key === "Enter") {ctx.drawImage(gameWinScreen2, 0, 0); gameWinStep = 1;}
-    else if (gameWinStep === 1 && readyToPlay === true && keyboardEvent.key === "Enter") {
+    if (gameWinStep === 0 && keyboardEvent.key === "Enter") {
+      ctx.drawImage(gameWinScreen2, 0, 0);
+      gameWinStep = 1;
+    } else if (
+      gameWinStep === 1 &&
+      readyToPlay === true &&
+      keyboardEvent.key === "Enter"
+    ) {
       readyToPlay = false;
       gameWinStep = 0;
       inGameWin = false;
       startGame();
     }
   }
-  if (inGame) {currentGame.lola.move(keyboardEvent.key);}
+  if (inGame) {
+    currentGame.lola.move(keyboardEvent.key);
+  }
 });

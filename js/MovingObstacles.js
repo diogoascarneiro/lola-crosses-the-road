@@ -56,15 +56,15 @@ class Car extends MovingObstacle {
   // constructor(...args){
   //   super();
   // }
-  
+
   moveLeft() {
     this.direction = "left";
     if (this.x > 0) {
       this.x -= this.dx;
     }
-    currentGame.people.forEach(person => {
+    currentGame.people.forEach((person) => {
       if (detectCollision(this, person)) {
-       person.rip();
+        person.rip();
       }
     });
   }
@@ -73,9 +73,9 @@ class Car extends MovingObstacle {
     if (this.x < canvas.width) {
       this.x += this.dx;
     }
-    currentGame.people.forEach(person => {
+    currentGame.people.forEach((person) => {
       if (detectCollision(this, person)) {
-       person.rip();
+        person.rip();
       }
     });
   }
@@ -85,9 +85,9 @@ class Car extends MovingObstacle {
     if (this.y > 0) {
       this.y -= this.dy;
     }
-    currentGame.people.forEach(person => {
+    currentGame.people.forEach((person) => {
       if (detectCollision(this, person)) {
-       person.rip();
+        person.rip();
       }
     });
   }
@@ -96,18 +96,27 @@ class Car extends MovingObstacle {
     if (this.y < canvas.height) {
       this.y += this.dy;
     }
-    currentGame.people.forEach(person => {
+    currentGame.people.forEach((person) => {
       if (detectCollision(this, person)) {
-       person.rip();
+        person.rip();
       }
     });
   }
- 
+
   drawCar() {
     switch (this.type) {
-      default: simpleDraw(carSprites, this.type, this.x, this.y, 1.5, 1.5, this.direction);
+      default:
+        simpleDraw(
+          carSprites,
+          this.type,
+          this.x,
+          this.y,
+          1.5,
+          1.5,
+          this.direction
+        );
     }
-   }
+  }
 }
 
 function createCar(x, y, width, height, color, direction) {
@@ -118,27 +127,25 @@ function createCar(x, y, width, height, color, direction) {
 
 function moveCars() {
   currentGame.cars.forEach((car) => {
-   
-   if (car.direction === "right") { 
-     if (car.x < canvas.width) {
-     car.moveRight();
-     } else {
-     car.x = 0;
-   }
- }
-if (car.direction === "left") { 
-  if (car.x > 0) {
-  car.moveLeft();
-  } else {
-  car.x = canvas.width;
-}
-}
+    if (car.direction === "right") {
+      if (car.x < canvas.width) {
+        car.moveRight();
+      } else {
+        car.x = 0;
+      }
+    }
+    if (car.direction === "left") {
+      if (car.x > 0) {
+        car.moveLeft();
+      } else {
+        car.x = canvas.width;
+      }
+    }
     car.drawCar();
     if (detectCollision(currentGame.lola, car)) {
       currentGame.gameOver = true;
     }
   });
-
 }
 
 /* PERSON CLASS */
@@ -174,17 +181,18 @@ class Person extends MovingObstacle {
     screamMale.play();
   }
 
-// this almost works, but I think I don't have the time to tweak it... :/ Leaving it here for the future!
+  // this almost works, but I think I don't have the time to tweak it... :/ Leaving it here for the future!
   animate() {
     let initialSSX = {
       up: peopleSet1[`${this.type}`].up.spriteSX,
       down: peopleSet1[`${this.type}`].down.spriteSX,
       left: peopleSet1[`${this.type}`].left.spriteSX,
-      right: peopleSet1[`${this.type}`].right.spriteSX
-    }
+      right: peopleSet1[`${this.type}`].right.spriteSX,
+    };
     let currentSSX = {};
 
-    currentSSX[`${this.direction}`] = initialSSX[`${this.direction}`] + (activePersonFrame * 48);
+    currentSSX[`${this.direction}`] =
+      initialSSX[`${this.direction}`] + activePersonFrame * 48;
     activePersonFrame++;
     if (activePersonFrame > 2) {
       activePersonFrame = 0;
@@ -192,7 +200,9 @@ class Person extends MovingObstacle {
     }
 
     switch (this.type) {
-      default: peopleSet1[`${this.type}`][`${this.direction}`].spriteSX = currentSSX[`${this.direction}`];
+      default:
+        peopleSet1[`${this.type}`][`${this.direction}`].spriteSX =
+          currentSSX[`${this.direction}`];
     }
   }
 
@@ -270,28 +280,60 @@ class Person extends MovingObstacle {
         break;
     }
   }
- // this could be simpler (just one case - like I did somewhere else in the code)
+  // this could be simpler (just one case - like I did somewhere else in the code)
   drawObstacle() {
     switch (this.type) {
       case "male1":
         this.width = peopleSet1.male1.frameWidth * this.widthMultiplier;
         this.height = peopleSet1.male1.frameHeight * this.heightMultiplier;
-        simpleDraw(peopleSet1, this.type, this.x, this.y, this.widthMultiplier, this.heightMultiplier, this.direction);
+        simpleDraw(
+          peopleSet1,
+          this.type,
+          this.x,
+          this.y,
+          this.widthMultiplier,
+          this.heightMultiplier,
+          this.direction
+        );
         break;
       case "male2":
         this.width = peopleSet1.male2.frameWidth * this.widthMultiplier;
         this.height = peopleSet1.male2.frameHeight * this.heightMultiplier;
-        simpleDraw(peopleSet1, this.type, this.x, this.y, this.widthMultiplier, this.heightMultiplier, this.direction);
+        simpleDraw(
+          peopleSet1,
+          this.type,
+          this.x,
+          this.y,
+          this.widthMultiplier,
+          this.heightMultiplier,
+          this.direction
+        );
         break;
       case "male3":
         this.width = peopleSet1.male3.frameWidth * this.widthMultiplier;
         this.height = peopleSet1.male3.frameHeight * this.heightMultiplier;
-        simpleDraw(peopleSet1, this.type, this.x, this.y, this.widthMultiplier, this.heightMultiplier, this.direction);
+        simpleDraw(
+          peopleSet1,
+          this.type,
+          this.x,
+          this.y,
+          this.widthMultiplier,
+          this.heightMultiplier,
+          this.direction
+        );
         break;
       case "female1":
         this.width = peopleSet1.female1.frameWidth * this.widthMultiplier;
         this.height = peopleSet1.female1.frameHeight * this.heightMultiplier;
-        simpleDraw(peopleSet1, this.type, this.x, this.y, this.widthMultiplier, this.heightMultiplier, this.direction);
+        simpleDraw(
+          peopleSet1,
+          this.type,
+          this.x,
+          this.y,
+          this.widthMultiplier,
+          this.heightMultiplier,
+          this.direction
+        );
         break;
     }
   }

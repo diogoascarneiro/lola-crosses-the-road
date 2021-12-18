@@ -1,6 +1,6 @@
 /* COLLISION DETECTION
  *  hasCollided() checks for collision between an object and anything else,
-*   detectCollision() checks for collision between two specific objects */
+ *   detectCollision() checks for collision between two specific objects */
 
 function detectCollision(entity, obstacle) {
   let entityLeft = entity.x;
